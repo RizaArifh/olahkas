@@ -13,7 +13,7 @@
     <form action="">
         <br>
         <label for="username">Password:</label>
-        <input type="text" name="password" placeholder="password">
+        <input type="text" name="password" placeholder="Masukan password">
         <br>
     <input type="submit" value="Login">
     </form>
