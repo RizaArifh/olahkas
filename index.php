@@ -8,7 +8,7 @@
 </head>
 <body>
     <form action="back/proses_login.php" method="post">
-        <label for="username">Username:</label>
+        <label for="username">Username :</label>
         <input type="text" name="username" placeholder="Masukan Username">
     <form action="">
         <br>
