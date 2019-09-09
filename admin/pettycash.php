@@ -53,7 +53,7 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
             <label for="">Keterangan :</label>
             <input type="text" name="nama_keterangan" placeholder=""> <br>
 
-            <label for="">Jml Kas Bon :</label>
+            <label for="">Jml Dana :</label>
             <input type="text" name="kasbon" id="jmlk" placeholder="" onchange="updatesaldo(this.value)" > <br>
 
             <input type="submit" value="Masukan Data">

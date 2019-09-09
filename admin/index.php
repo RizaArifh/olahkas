@@ -11,11 +11,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <a href="../admin/kegiatan_rka.php" class="btn btn-primary btn-md" >Kegiatan Sesuai RKA</a>
-    <a href="../admin/sertifikasi.php" class="btn btn-primary btn-md">Sertifikasi</a>
-    <a href="../admin/kasbon.php" class="btn btn-primary btn-md">KAS BON</a>
-    <a href="../admin/pettycash.php" class="btn btn-primary btn-md">PETTY CASH</a>
-    <a href="../admin/lainlain.php" class="btn btn-primary btn-md">Lain-Lain</a>
-    <a href="../admin/data_transaksi.php" class="btn btn-primary btn-md">Data Base/ Edit Transaksi</a>
+    <?php 
+    include "../element/_nav.php"
+    ?>
 </body>
 </html>

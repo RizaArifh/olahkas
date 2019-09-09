@@ -76,7 +76,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 <h2>Tambah Kegiatan</h2>
             <form action="../back/tambah_kegiatan.php" method="post">
                 <label for="">Nama Kegiatan : </label>
-                <input type="text" name="in_nama_keg">
+                <input type="text" name="in_nama_keg" required>
                 <input type="submit" value="Tambah Kegiatan">
             </form>
             <table class="table1" border="1" cellpadding="10" cellspacing="0">

@@ -27,8 +27,8 @@
       // echo $jumlahk;
       
       $j[]=array('jumlah'=>$jumlah);
-      $k[]=array('jumlah'=>$jumlahk);
-      $dt=array_merge($dataskp,$j,$k);
+      $l[]=array('jumlah'=>$jumlahk);
+      $dt=array_merge($dataskp,$j,$l);
       // print_r($dt);
 // print_r(($datask));
 

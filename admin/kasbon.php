@@ -77,8 +77,8 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             <label for="">Jml Dana Yang Tersedia :</label>
             <input type="text" name="dana_ada" id="jmlad" placeholder="-" value="<?=$jumlahsaldos?>"<br>
             
-            <label for="">Jml Kas Bon :</label>
-            <input type="text" name="harus_bayar" id="jmlkasbon" placeholder="-" value="0"> <br>
+            <!-- <label for="">Jml Kas Bon :</label>
+            <input type="text" name="harus_bayar" id="jmlkasbon" placeholder="-" value="0"> <br> -->
 
             <label for="">Jml Kas Bon Sekarang :</label>
             <input type="text" name="kasbon" id="jmlk" placeholder="" onchange="updatesaldo(this.value)" > <br>
@@ -103,6 +103,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>
+                    <th>Kasbon</th>
                     <th>aksi</th>
                 </tr>
 
@@ -119,6 +120,25 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                     ?>
 
                     <td><?php echo $row["nama_orang"]; ?></td>
+                    <?php
+                    $namak= $row["nama_orang"];
+                    $sql2 = "SELECT * FROM data_transaksi WHERE subnama_kegiatan = '$namak'";
+                    $data2 = mysqli_query($con,$sql2);
+                    
+                    $jumlah=0;
+                    $jumlahk=0;
+                    $kasbonn=0;
+                    while ($row = mysqli_fetch_array($data2)) {
+                      $jumlahk=$jumlahk+$row['kredit'];
+                      $jumlah=$jumlah+$row['debet'];
+                      $kasbonn=$jumlahk-$jumlah;
+                      if($kasbonn==0){
+                        $jumlahk=0;
+                        $jumlah=0;
+                      }
+                    }
+                    ?>
+                    <td><?=$kasbonn?></td>
                     <td><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>">hapus</a></td>
                 </tr>
                 <?php $i++; ?>
