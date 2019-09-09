@@ -26,7 +26,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
     <div class="row">
         <div class="col-md-4">
             <h1>DEBET</h1>
-            <form action="../back/insert_rka.php" method="post">
+            <form action="../back/insert_rka.php" method="post" autocomplete="off">
                 <label for="tanggal">Tanggal :</label>
                 <input type="text" name="tgl" value="<?php echo date('d-m-Y'); ?>">
                 <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" hidden><br>
@@ -115,7 +115,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
     
 <div class="col-md-4">
         <h1>KREDIT</h1>
-        <form action="../back/insert_rka_k.php" method="post">
+        <form action="../back/insert_rka_k.php" method="post" autocomplete="off">
             
         <input type="text" name="tgl" value="<?php echo date('d-m-Y'); ?>">
                 <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" hidden><br>
@@ -187,7 +187,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
             // for (var i = 0; i < data.length; i++) {
             // $('#no_kegiatan').append(
             $('#nama_kegiatand').val(data[0].nama);
-            $('#jmlrka').val(data[1].jumlah);
+            $('#jmlrka').val(data[2].seharusnya);
             $('#sudah_debet').val(data[1].jumlah)
             // );
             // }

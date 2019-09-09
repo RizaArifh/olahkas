@@ -1,7 +1,7 @@
 <?php
 
 include "../back/conn.php";
- $datatotal = mysqli_query($con,"SElECT * FROM data_transaksi order by id");
+ $datatotal = mysqli_query($con,"SElECT * FROM data_transaksi where de not in ('4') order by id");
 
 ?>
 
@@ -53,8 +53,8 @@ $saldo=0;?>
 <tr>
     <td><?php echo $i; ?></td>
     <td>
-        <a href="ubah.php?id=<?php echo $row ["id"]; ?>">ubah</a> |
-        <a href="hapus.php?id=<?php echo $row ["id"]; ?>"onclick="return confirm ('yakin tak?');">hapus</a>
+        
+        <a href="../back/hapus.php?id=<?php echo $row ["id"]; ?>"onclick="return confirm ('yakin tak?');">hapus</a>
     </td>
     <td><?php echo DateTime::createFromFormat('Y-m-d', $row['tanggal'])->format('d-m-Y');?></td>
     <td><?php echo $row["ko"]; ?>.0<?php echo $row["de"]; ?></td>
