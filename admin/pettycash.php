@@ -47,8 +47,7 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
         <form action="../back/insert_kasbon_k.php" method="post">
             
         <label for="">Tanggal :</label>
-        <input type="text" name="tgl" value="<?php echo date('d-m-Y'); ?>">
-                <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" hidden><br>
+        <input type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly><br>
             
             <label for="">Keterangan :</label>
             <input type="text" name="nama_keterangan" placeholder=""> <br>
@@ -105,10 +104,9 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
 <div class="col-md-4">
 
 <h1>KREDIT</h1>
-            <form action="../back/insert_kasbon.php" method="post">
+            <form action="../back/insert_petty.php" method="post" autocomplete="off">
                 <label for="tanggal">Tanggal :</label>
-                <input type="text" name="tgl" value="<?php echo date('d-m-Y'); ?>">
-                <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" hidden><br>
+                <input type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>"><br>
                 <label for="No / Nama Kegiatan">Kegiatan / (No Bukti) : </label>
                 <select name="no_kegiatan" id="no_kegiatand" onChange="GetNo_kegiatand(this.value)" required>
                     <option value="">Pilih</option>
@@ -130,22 +128,23 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
                     print_r($data);
                     ?>
                 </select>
-                <input type="text" name="nama_keg" id="nama_kegiatand"> <br>
+                <input type="text" name="nama_keg" id="nama_kegiatand"readonly> <br>
+                <?php include "../back/get_jml_sisa.php";?>
                 <label for="">Jml Dana Yang Tersedia :</label>
-                <input type="text" name="harus_bayar" id="harus_bayar" placeholder="-" value="0"> <br>
+                <input type="text" name="harus_bayar" id="harus_bayar" value="<?=$tersisa?>"readonly> <br>
 
                 <label for="">Jumlah :</label>
                 <input type="text" name="dibayar" id="dibayar" onChange="updatekurang(this.value)" placeholder=""> <br>
 
                 <label for="">Sisa:</label>
-                <input type="text" name="kurang" id="kurang" placeholder="-"> <br>
+                <input type="text" name="kurang" id="kurang" placeholder="-"readonly> <br>
 
                 <input type="submit" value="Masukan Data">
 
             </form>
         
         </div>
-    
+
 
     <!-- <script src="../js/jquery.js"></script> -->
     <script>
@@ -173,7 +172,7 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
             // for (var i = 0; i < data.length; i++) {
             // $('#no_kegiatan').append(
             $('#nama_kegiatand').val(data[0].nama);
-            $('#harus_bayar').val(data[1].jumlah);
+            
             $('#sudah_bayar').val(data[2].jumlahk)
             // );
             // }
@@ -183,8 +182,8 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
 
         function updatekurang(dibayar) {
             var hrs_bayar = $("#harus_bayar").val();
-            var sdh_bayar = $("#sudah_bayar").val();
-            var kurang = (hrs_bayar-sdh_bayar-dibayar);
+            // var sdh_bayar = $("#sudah_bayar").val();
+            var kurang = (hrs_bayar-dibayar);
             if (kurang <= 0) {
                 kurang = (kurang * -1);
             }

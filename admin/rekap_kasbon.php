@@ -1,7 +1,7 @@
 <?php
 
 include "../back/conn.php";
- $datatotal = mysqli_query($con,"SElECT * FROM data_transaksi where de=4 group by subnama_kegiatan order by id");
+ $datatotal = mysqli_query($con,"SElECT * FROM data_transaksi where de=2 group by subnama_kegiatan order by id");
 
 ?>
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ include "../back/conn.php";
             $debt=0;
             $p = 1;
             $sub=$row["subnama_kegiatan"];
-            $data_kasbon= mysqli_query($con,"SElECT * FROM data_transaksi where subnama_kegiatan='$sub' and de=4");
+            $data_kasbon= mysqli_query($con,"SElECT * FROM data_transaksi where subnama_kegiatan='$sub' and de=2");
             while($row2=mysqli_fetch_array($data_kasbon)){
                 $kred=$kred+$row2['kredit'];
                 $p++;

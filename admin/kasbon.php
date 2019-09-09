@@ -45,11 +45,10 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
         <div class="col-md-4">
             
             <h1>KREDIT</h1>
-        <form action="../back/insert_kasbon_k.php" method="post">
+        <form action="../back/insert_kasbon_k.php" method="post" autocomplete="off">
             
         <label for="">Tanggal :</label>
-        <input type="text" name="tgl" value="<?php echo date('d-m-Y'); ?>">
-                <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" hidden><br>
+        <input type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly><br>
             
             <label for="">No / Nama :</label>
             <select name="no_kegiatan" id="no_orangk" onChange="GetNo_kegiatank(this.value)" required>
@@ -72,16 +71,14 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 print_r($data);
                 ?>
             </select>
-            <input type="text" name="nama_orang" id="nama_orangk"> <br>
+            <input type="text" name="nama_orang" id="nama_orangk"readonly <br>
 
+            <?php include "../back/get_jml_sisa.php";?>
             <label for="">Jml Dana Yang Tersedia :</label>
-            <input type="text" name="dana_ada" id="jmlad" placeholder="-" value="<?=$jumlahsaldos?>"<br>
+            <input type="text" name="dana_ada" id="jmlad" placeholder="-" value="<?=$tersisa?>"readonly><br>
             
-            <!-- <label for="">Jml Kas Bon :</label>
-            <input type="text" name="harus_bayar" id="jmlkasbon" placeholder="-" value="0"> <br> -->
-
             <label for="">Jml Kas Bon Sekarang :</label>
-            <input type="text" name="kasbon" id="jmlk" placeholder="" onchange="updatesaldo(this.value)" > <br>
+            <input type="text" name="kasbon" id="jmlk" placeholder="Masukan Jumlah Kas Bon" onChange="cek(this.value)" > <br>
 
             <input type="submit" value="Masukan Data">
 
@@ -156,8 +153,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
 <h1>DEBET</h1>
             <form action="../back/insert_kasbon.php" method="post">
                 <label for="tanggal">Tanggal :</label>
-                <input type="text" name="tgl" value="<?php echo date('d-m-Y'); ?>">
-                <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" hidden><br>
+                <input type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>"readonly><br>
                 <label for="No / Nama Kegiatan">No / Nama : </label>
                 <select name="no_kegiatan" id="no_orang" onChange="GetNo_kegiatand(this.value)" required>
                     <option value="">Pilih</option>
@@ -179,18 +175,18 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                     print_r($data);
                     ?>
                 </select>
-                <input type="text" name="nama_orang" id="nama_orangd"> <br>
+                <input type="text" name="nama_orang" id="nama_orangd"readonly> <br>
                 <label for="">Jml Yang Harus Di Bayar :</label>
                 <input type="text" name="harus_bayar" id="harus_bayar" placeholder="-" value="0"> <br>
 
                 <label for="">Jml Sudah Di Bayar :</label>
-                <input type="text" name="sudah_bayar" id="sudah_bayar" placeholder="-"> <br>
+                <input type="text" name="sudah_bayar" id="sudah_bayar" placeholder="-"readonly> <br>
 
                 <label for="">Jml DiBayar Sekarang :</label>
                 <input type="text" name="dibayar" id="dibayar" onChange="updatekurang2(this.value)" placeholder=""> <br>
 
                 <label for="">Kurang Di Setor:</label>
-                <input type="text" name="kurang" id="kurang" placeholder="-"> <br>
+                <input type="text" name="kurang" id="kurang" placeholder="-"readonly> <br>
 
                 <input type="submit" value="Masukan Data">
 
@@ -272,7 +268,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             // for (var i = 0; i < data.length; i++) {
             // $('#no_kegiatan').append(
             $('#nama_orangk').val(data[0].nama);
-            $('#jmlkasbon').val(data[1].kasbon);
+            // $('#jmlad').val(data[1].tersisa);
             // $('#sudah_bayar').val(data[2].jumlahk)
             // );
             // }
@@ -303,15 +299,26 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             
 
         };
-
-        function updatesaldo(kredit) {
-            var jumlahada = $("#jmlad").val();
+        function cek(bon) {
             
-            var saldo = (jumlahada - kredit);
-            if (saldo <= 0) {
-                saldo = (saldo * -1);
+            var dana = $("#jmlad").val();
+            var kurang = (dana-bon);
+            // if (kurang <= 0) {
+            //     kurang = (kurang * -1);
+            // }
+            if (kurang<0){
+                Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                html: 'Jumlah Yang Di Kas Bon <br> Tidak Boleh Lebih dari Jumlah Dana Yang Ada',
+                })
+                $("#jmlk").val(0);
             }
-            $("#saldo").val(saldo);
+            
+            
+            
+            
+
         };
     
     </script>

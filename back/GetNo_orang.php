@@ -31,9 +31,9 @@
 
     //   // echo $jumlah;
       $j[]=array('jumlahk'=>$jumlahk);
-      $k[]=array('jumlah'=>$jumlah);
+      $l[]=array('jumlah'=>$jumlah);
       $dt=array_merge($datasd,$j);
-      $da=array_merge($dt,$k);
+      $da=array_merge($dt,$l);
       // print_r($dt);
         echo json_encode($da);
     ?>

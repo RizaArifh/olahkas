@@ -12,10 +12,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <?php include "../element/boots.php"?>
     <title>Kegiatan RKA</title>
 </head>
 
@@ -28,8 +25,8 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
             <h1>DEBET</h1>
             <form action="../back/insert_rka.php" method="post" autocomplete="off">
                 <label for="tanggal">Tanggal :</label>
-                <input type="text" name="tgl" value="<?php echo date('d-m-Y'); ?>">
-                <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" hidden><br>
+                <input type="text" name="tanggal" value="<?php echo date('d-m-Y');?>" readonly>
+                <br>
                 <label for="No / Nama Kegiatan">No / Nama Kegiatan : </label>
                 <select name="no_kegiatan" id="no_kegiatand" onChange="GetNo_kegiatand(this.value)" required>
                     <option value="">Pilih</option>
@@ -51,18 +48,18 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                     print_r($data);
                     ?>
                 </select>
-                <input type="text" name="nama_keg" id="nama_kegiatand"> <br>
+                <input type="text" name="nama_keg" id="nama_kegiatand"readonly> <br>
                 <label for="">Jml Sesuai RKA :</label>
                 <input type="text" name="anggaran_rka" id="jmlrka" placeholder="-"> <br>
 
                 <label for="">Jml Sudah DiDebet :</label>
-                <input type="text" name="sudah_debet" id="sudah_debet" placeholder="-"> <br>
+                <input type="text" name="sudah_debet" id="sudah_debet" placeholder="-"readonly> <br>
 
                 <label for="">Jml DiDebet Sekarang :</label>
                 <input type="text" name="didebet" id="didebet" onChange="updatekurang(this.value)" placeholder=""> <br>
 
                 <label for="">Kurang :</label>
-                <input type="text" name="kurang" id="kurang" placeholder="-"> <br>
+                <input type="text" name="kurang" id="kurang" placeholder="-"readonly> <br>
 
                 <label for="">Keterangan :</label>
                 <input type="text" name="keterangan" placeholder=""> <br>
@@ -117,8 +114,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
         <h1>KREDIT</h1>
         <form action="../back/insert_rka_k.php" method="post" autocomplete="off">
             
-        <input type="text" name="tgl" value="<?php echo date('d-m-Y'); ?>">
-                <input type="text" name="tanggal" value="<?php echo date('Y-m-d'); ?>" hidden><br>
+        <input type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly><br>
             <label for="No / Nama Kegiatan">No / Nama Kegiatan : </label>
             <select name="no_kegiatan" id="no_kegiatank" onChange="GetNo_kegiatank(this.value)" required>
                 <option value="">Pilih</option>
@@ -140,21 +136,21 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 print_r($data);
                 ?>
             </select>
-            <input type="text" name="nama_keg" id="nama_kegiatank"> <br>
+            <input type="text" name="nama_keg" id="nama_kegiatank"readonly> <br>
             <label for="">Sub Kegiatan :</label>
             <input type="text" name="sub_kegiatan" placeholder=""> <br>
 
             <label for="">Jml Dana Yang Ada :</label>
-            <input type="text" name="dana_ada" id="jmlad" placeholder="-"> <br>
+            <input type="text" name="dana_ada" id="jmlad" placeholder="-"readonly> <br>
 
             <label for="">Jml Sdh DiKeluarkan :</label>
-            <input type="text" name="dana_sdh_keluar" id="jmlk" placeholder="-"> <br>
+            <input type="text" name="dana_sdh_keluar" id="jmlk" placeholder="-"readonly> <br>
 
             <label for="">JML DiKeluarkan Sekarang :</label>
             <input type="text" name="kredit" id="kredit" onChange="updatesaldo(this.value)" placeholder=""> <br>
 
             <label for="">Saldo :</label>
-            <input type="text" name="saldo" id="saldo" placeholder="-"> <br>
+            <input type="text" name="saldo" id="saldo" placeholder="-"readonly> <br>
             <input type="submit" value="Masukan Data">
 
         </form>
@@ -227,18 +223,28 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
             var jmlrkaa = $("#jmlrka").val();
             var sdhdebeta = $("#sudah_debet").val();
             var kurang = (jmlrkaa - sdhdebeta - debet);
-            if (kurang <= 0) {
-                kurang = (kurang * -1);
-            }
-            $("#kurang").val(kurang);
+            if (kurang < 0) {
+                Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                html: 'Jumlah Yang Di Debet <br> Tidak Boleh Melebihi Jumlah Sesuai RKA',
+                })
+                $("#kurang").val('0');    
+            }else{
+            $("#kurang").val(kurang);}
         };
 
         function updatesaldo(kredit) {
             var jumlahada = $("#jmlad").val();
             var jumlahkredit = $("#jmlk").val();
             var saldo = (jumlahada - jumlahkredit - kredit);
-            if (saldo <= 0) {
-                saldo = (saldo * -1);
+            if (saldo < 0) {
+                Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                html: 'Jumlah Yang Di Keluarkan <br> Tidak Boleh Melebihi Jumlah yang ada',
+                })
+                $("#kurang").val('0');
             }
             $("#saldo").val(saldo);
         };
