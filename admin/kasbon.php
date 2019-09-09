@@ -93,7 +93,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
         <h2>Tambah Orang</h2>
             <form action="../back/tambah_orang.php" method="post">
                 <label for="">Nama : </label>
-                <input type="text" name="in_nama"><br>
+                <input type="text" name="in_nama" required><br>
                 <input type="submit" value="Tambahkan">
             </form>
             <a href="../back/clear_orang.php">clear orang</a>
@@ -108,7 +108,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 </tr>
 
                 <?php $i = 1; ?>
-                <?php foreach ($databon as $row) : ?>
+                <?php foreach ($databon as $row) { ?>
                 <tr>
                     <?php if($i<10){?>
                     <td>0<?php echo $row["no_orang"]; ?></td>    
@@ -128,9 +128,9 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                     $jumlah=0;
                     $jumlahk=0;
                     $kasbonn=0;
-                    while ($row = mysqli_fetch_array($data2)) {
-                      $jumlahk=$jumlahk+$row['kredit'];
-                      $jumlah=$jumlah+$row['debet'];
+                    while ($rows = mysqli_fetch_array($data2)) {
+                      $jumlahk=$jumlahk+$rows['kredit'];
+                      $jumlah=$jumlah+$rows['debet'];
                       $kasbonn=$jumlahk-$jumlah;
                       if($kasbonn==0){
                         $jumlahk=0;
@@ -143,13 +143,12 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 </tr>
                 <?php $i++; ?>
 
-                <?php endforeach;
+                <?php };
                 
                 // print_r($last_keg);
                 ?>
 
             </table>
-            
         </div>
     
     

@@ -47,7 +47,8 @@ include "../back/conn.php";
     <th class="col">Keterangan</th>
 </tr>
 </thead>
-<?php $i = 1; ?>
+<?php $i = 1; 
+$saldo=0;?>
 <?php foreach ( $datatotal as $row ) : ?>
 <tr>
     <td><?php echo $i; ?></td>
@@ -61,7 +62,10 @@ include "../back/conn.php";
     <td><?php echo $row["subnama_kegiatan"]; ?></td>
     <td><?php echo $row["debet"]; ?></td>
     <td><?php echo $row["kredit"]; ?></td>
-    <td><?php echo $row["saldo"]; ?></td>
+    <?php 
+    $saldo=$saldo+$row['debet']-$row['kredit'];
+    ?>
+    <td><?php echo $saldo; ?></td>
     <td><?php echo $row["keterangan"]; ?></td>
     
 </tr>
