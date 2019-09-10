@@ -288,9 +288,10 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 Swal.fire({
                 type: 'error',
                 title: 'Oops...',
-                html: 'Jumlah Yang Di Bayar <br> Tidak Boleh Melebihi Jumlah Yang Harus Di Bayar',
+                html: 'Jumlah Yang Di Bayar <br> Tidak Boleh Melebihi Jumlah Yang Harus Di Bayar <br> jumlah yang di Bayar : '+dibayar,
                 })
             
+                $("#dibayar").val(0);
                 $("#kurang").val(0);
             }else{
             
@@ -310,7 +311,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 Swal.fire({
                 type: 'error',
                 title: 'Oops...',
-                html: 'Jumlah Yang Di Kas Bon <br> Tidak Boleh Lebih dari Jumlah Dana Yang Ada',
+                html: 'Jumlah Yang Di Kas Bon <br> Tidak Boleh Lebih dari Jumlah Dana Yang Ada <br> jumlah yang di Kas Bon : '+bon,
                 })
                 $("#jmlk").val(0);
             }

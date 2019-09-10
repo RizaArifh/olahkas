@@ -227,8 +227,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 Swal.fire({
                 type: 'error',
                 title: 'Oops...',
-                html: 'Jumlah Yang Di Debet <br> Tidak Boleh Melebihi Jumlah Sesuai RKA',
+                html: 'Jumlah Yang Di Debet <br> Tidak Boleh Melebihi Jumlah Sesuai RKA <br> jumlah yang di debet : '+debet,
                 })
+                $("#didebet").val('0');    
                 $("#kurang").val('0');    
             }else{
             $("#kurang").val(kurang);}
@@ -242,11 +243,14 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 Swal.fire({
                 type: 'error',
                 title: 'Oops...',
-                html: 'Jumlah Yang Di Keluarkan <br> Tidak Boleh Melebihi Jumlah yang ada',
+                html: 'Jumlah Yang Di Keluarkan <br> Tidak Boleh Melebihi Jumlah yang ada <br> jumlah yang di keluarkan : '+kredit,
                 })
-                $("#kurang").val('0');
+                $("#kredit").val('0');
+                $("#saldo").val('0');
+            }else{
+                $("#saldo").val(saldo);
             }
-            $("#saldo").val(saldo);
+            
         };
     </script>
     <script>
