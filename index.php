@@ -13,10 +13,13 @@
     <form action="">
         <br>
         <label for="username">Password:</label>
-        <input type="text" name="password" placeholder="password">
+        <input type="password" name="password" placeholder="password">
         <br>
     <input type="submit" value="Login">
     </form>
-
+    <?php
+    session_start();
+print_r($_SESSION);
+?>
 </body>
 </html>

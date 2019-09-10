@@ -14,5 +14,8 @@
     <?php 
     include "../element/_nav.php"
     ?>
+    <?php
+    print_r($_SESSION);
+    ?>
 </body>
 </html>

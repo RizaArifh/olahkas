@@ -33,7 +33,20 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     <?php include "../element/boots.php";?>
-    
+    <style>thead, tbody { display: block; }
+
+tbody {
+    max-height: 300px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+
+thead tr th { 
+    text-align: center;
+}
+tbody td:last-child, thead th:last-child {
+    border-right: none;
+}</style>
     <title>Kasbon</title>
 </head>
 
@@ -192,8 +205,9 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
 
             </form>
         </div>
-    
-
+    <?php
+print_r($_SESSION);
+?>
     <!-- <script src="../js/jquery.js"></script> -->
     <script>
         function GetNo_kegiatand(id) {
