@@ -16,7 +16,8 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
     <style>
         thead,
         tbody {
-            display: block;
+            display:block;
+            width:100%;
         }
 
         tbody {
@@ -33,12 +34,8 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
         }
 
         tbody td:last-child,
-        thead th:last-child {
-            border-right: none;
-        }
-
-        tr {
-            width: 100%;
+        thead th:last-child,tr {
+            border: none;
         }
         
     </style>
@@ -203,7 +200,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <label for="" class="control-label">Keterangan </label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" name="keterangan"><br>
+                                    <input class="form-control" type="text" name="keterangan" required><br>
                                 </div>
                             </div>
                             <input type="submit" value="Masukan">
@@ -213,7 +210,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
 
             </div>
             <div class="col-md-3">
-
+            
                 <?php $i = 1; ?>
                 <h2>Tambah Kegiatan</h2>
                 <form action="../back/tambah_kegiatan.php" method="post">
@@ -225,9 +222,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                             <input type="text" class="form-control" name="in_nama_keg" required><br>
                         </div>
                     </div>
-
-                    <input class="btn btn-primary" type="submit" value="Tambah Kegiatan" style="float:right;">
-                
+<div class="row" style="float:right">
+                    <input class="btn btn-primary" type="submit" value="Tambah Kegiatan">
+                    </div>
 
                 </form>
                 <br><br><br>
@@ -236,9 +233,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                         <table class="table" >
                             <thead>
                                 <tr>
-                                    <th class="col-3">No.</th>
-                                    <th class="col-6">Nama Kegiatan</th>
-                                    <th class="col-3">aksi</th>
+                                    <th class="col col-md-3">No.</th>
+                                    <th class="col col-md-6">Nama Kegiatan</th>
+                                    <th class="col col-md-3">aksi</th>
                                 </tr>
                             </thead class="">
                             <tbody>
@@ -246,15 +243,15 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                 foreach ($datakeg as $row) : ?>
                                     <tr>
                                         <?php if ($i < 10) { ?>
-                                            <td class="text-center col-3">0<?php echo $row["no_keg"]; ?></td>
+                                            <td class="col text-center col-3">0<?php echo $row["no_keg"]; ?></td>
                                         <?php
                                             } else { ?>
-                                            <td class="text-center col-3"><?php echo $row["no_keg"]; ?></td>
+                                            <td class="col text-center col-3"><?php echo $row["no_keg"]; ?></td>
                                         <?php
                                             }
                                             ?>
-                                        <td class="col-6"><?php echo $row["nama_kegiatan"]; ?></td>
-                                        <td class="text-center col-3 btn btn-outline-danger"><a href="../back/delete_keg.php?id=<?php echo $row['id']; ?>">hapus</a></td>
+                                        <td class="col col-6"><?php echo $row["nama_kegiatan"]; ?></td>
+                                        <td class="col text-center col-3 btn btn-outline-danger"><a href="../back/delete_keg.php?id=<?php echo $row['id']; ?>">hapus</a></td>
                                     </tr>
                                     <?php $i++; ?>
 
