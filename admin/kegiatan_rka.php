@@ -40,6 +40,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
         tr {
             width: 100%;
         }
+        
     </style>
     <title>Kegiatan RKA</title>
 </head>
@@ -232,7 +233,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 <br><br><br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table" border="1">
+                        <table class="table" >
                             <thead>
                                 <tr>
                                     <th class="col-3">No.</th>

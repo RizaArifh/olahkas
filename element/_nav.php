@@ -17,6 +17,12 @@
         <a href="../admin/rekap_kasbon.php" class="btn btn-secondary btn-md">Rekap Kasbon</a>
         
         <a href="../back/logout.php" class="btn btn-secondary btn-md">Log Out</a>
-    
     </div>
 </div>    
+<?php
+session_start();
+if($_SESSION['status']!='login'){
+    header("location:../index.php");
+}
+
+?>

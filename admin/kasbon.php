@@ -33,24 +33,13 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     <?php include "../element/boots.php";?>
-    <style>thead, tbody { display: block; }
-
-tbody {
-    max-height: 300px;       /* Just for the demo          */
-    overflow-y: auto;    /* Trigger vertical scroll    */
-    overflow-x: hidden;  /* Hide the horizontal scroll */
-}
-
-thead tr th { 
-    text-align: center;
-}
-tbody td:last-child, thead th:last-child {
-    border-right: none;
+    <style>
 }</style>
     <title>Kasbon</title>
 </head>
 
 <body>
+    <div class="container-fluid">
     <?php
     include "../element/_nav.php"
     ?>
@@ -59,12 +48,20 @@ tbody td:last-child, thead th:last-child {
             
             <h1>KREDIT</h1>
         <form action="../back/insert_kasbon_k.php" method="post" autocomplete="off">
-            
-        <label for="">Tanggal :</label>
-        <input type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly><br>
-            
-            <label for="">No / Nama :</label>
-            <select name="no_kegiatan" id="no_orangk" onChange="GetNo_kegiatank(this.value)" required>
+        <div class="row">
+        <div class="col-md-4">
+        <label for="">Tanggal</label>
+        </div><div class="col-md-8">
+        <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly><br>
+        </div></div>
+        <div class="row">
+        <div class="col-md-4">
+            <label for="">No / Nama </label>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                <div class="col-md-4">
+            <select name="no_kegiatan" class="form-control" id="no_orangk" onChange="GetNo_kegiatank(this.value)" required>
                 <option value="">Pilih</option>
                 <?php
                 $list_no_keg = "SELECT * FROM orang_kasbon";
@@ -83,28 +80,42 @@ tbody td:last-child, thead th:last-child {
                 <?php };
                 print_r($data);
                 ?>
-            </select>
-            <input type="text" name="nama_orang" id="nama_orangk"readonly <br>
-
+            </select></div><div class="col-md-8">
+            <input type="text" name="nama_orang" id="nama_orangk" class="form-control" readonly>>
+            </div>
+            </div></div></div>
             <?php include "../back/get_jml_sisa.php";?>
-            <label for="">Jml Dana Yang Tersedia :</label>
-            <input type="text" name="dana_ada" id="jmlad" placeholder="-" value="<?=$tersisa?>"readonly><br>
-            
-            <label for="">Jml Kas Bon Sekarang :</label>
-            <input type="text" name="kasbon" id="jmlk" placeholder="Masukan Jumlah Kas Bon" onChange="cek(this.value)" > <br>
+            <div class="row">
+        <div class="col-md-4">
+            <label for="">Jml Dana Yang Tersedia</label>
+            </div><div class="col-md-8">
+            <input type="text" name="dana_ada" id="jmlad" class="form-control" placeholder="-" value="<?=$tersisa?>"readonly><br>
+            </div></div>
+            <div class="row">
+        <div class="col-md-4">
+            <label for="">Jml Kas Bon Sekarang</label>
+            </div><div class="col-md-8">
+            <input type="text" name="kasbon" id="jmlk" class="form-control" placeholder="Masukan Jumlah Kas Bon" onChange="cek(this.value)" > <br>
+            </div></div>
 
             <input type="submit" value="Masukan Data">
 
         </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
         
         <?php $i = 1; ?>
         <h2>Tambah Orang</h2>
             <form action="../back/tambah_orang.php" method="post">
+            <div class="row">
+                        <div class="col-4">
                 <label for="">Nama : </label>
-                <input type="text" name="in_nama" required><br>
+                        </div><div class="col-8">
+                <input class="form-control" type="text" name="in_nama" required><br>
+                </div></div>
+                <div class="row" style="float:right">
                 <input type="submit" value="Tambahkan">
+                </div>
             </form>
             <a href="../back/clear_orang.php">clear orang</a>
                 
@@ -162,7 +173,7 @@ tbody td:last-child, thead th:last-child {
         </div>
     
     
-<div class="col-md-4">
+<div class="col-md-5">
 <h1>DEBET</h1>
             <form action="../back/insert_kasbon.php" method="post">
                 <label for="tanggal">Tanggal :</label>
@@ -205,9 +216,10 @@ tbody td:last-child, thead th:last-child {
 
             </form>
         </div>
-    <?php
-print_r($_SESSION);
-?>
+        <?php
+    print_r($_SESSION);
+    ?></div>
+    
     <!-- <script src="../js/jquery.js"></script> -->
     <script>
         function GetNo_kegiatand(id) {
@@ -337,6 +349,7 @@ print_r($_SESSION);
         };
     
     </script>
+    
 </body>
 
 </html>
