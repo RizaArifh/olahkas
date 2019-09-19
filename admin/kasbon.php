@@ -180,7 +180,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 <div class="col-md-4">
                 <label for="tanggal">Tanggal :</label>
                 </div><div class="col-md-8">
-                <input type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>"readonly><br>
+                <input type="text" name="tanggal" class="form-control"value="<?php echo date('d-m-Y'); ?>"readonly><br>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
@@ -189,7 +189,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 <div class="col-md-8">
                     <div class="row">
                     <div class="col-md-4">
-                <select name="no_kegiatan" id="no_orang" onChange="GetNo_kegiatand(this.value)" required>
+                <select name="no_kegiatan" id="no_orang" class="form-control" onChange="GetNo_kegiatand(this.value)" required>
                     <option value="">Pilih</option>
                     <?php
                     $list_no_keg = "SELECT * FROM orang_kasbon";
@@ -209,31 +209,31 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                     print_r($data);
                     ?>
                 </select></div><div class="col-md-8">
-                <input type="text" name="nama_orang" id="nama_orangd"readonly> <br>
+                <input type="text" name="nama_orang" class="form-control" id="nama_orangd"readonly> <br>
                 </div></div></div></div>
                 <div class="row">
                 <div class="col-md-4">
                 <label for="">Jml Yang Harus Di Bayar :</label>
                 </div><div class="col-md-8">
-                <input type="text" name="harus_bayar" id="harus_bayar" placeholder="-" value="0"> <br>
+                <input type="text" name="harus_bayar" id="harus_bayar" class="form-control" placeholder="-" value="0"> <br>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
                 <label for="">Jml Sudah Di Bayar :</label>
                 </div><div class="col-md-8">
-                <input type="text" name="sudah_bayar" id="sudah_bayar" placeholder="-"readonly> <br>
+                <input type="text" name="sudah_bayar" id="sudah_bayar" placeholder="-" class="form-control"readonly> <br>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
                 <label for="">Jml DiBayar Sekarang :</label>
                 </div><div class="col-md-8">
-                <input type="text" name="dibayar" id="dibayar" onChange="updatekurang2(this.value)" placeholder=""> <br>
+                <input type="text" name="dibayar" class="form-control"id="dibayar" onChange="updatekurang2(this.value)" placeholder=""> <br>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
                 <label for="">Kurang Di Setor:</label>
                 </div><div class="col-md-8">
-                <input type="text" name="kurang" id="kurang" placeholder="-"readonly> <br>
+                <input type="text" name="kurang" id="kurang" class="form-control"placeholder="-"readonly> <br>
                 </div></div>
                 <div class="row">
                 <input type="submit" value="Masukan Data">

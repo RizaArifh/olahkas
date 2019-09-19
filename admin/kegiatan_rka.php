@@ -13,32 +13,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <?php include "../element/boots.php" ?>
-    <style>
-        thead,
-        tbody {
-            display:block;
-            width:100%;
-        }
 
-        tbody {
-            max-height: 300px;
-            /* Just for the demo          */
-            overflow-y: auto;
-            /* Trigger vertical scroll    */
-            overflow-x: hidden;
-            /* Hide the horizontal scroll */
-        }
-
-        thead tr th {
-            text-align: center;
-        }
-
-        tbody td:last-child,
-        thead th:last-child,tr {
-            border: none;
-        }
-        
-    </style>
     <title>Kegiatan RKA</title>
 </head>
 
@@ -85,10 +60,8 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                                     <?php
                                                         } else { ?>
                                                         <option value="<?= $no_keg['id'] ?>"><?= $no_keg['no_keg']; ?> </option>
-                                                        }
-                                                    <?php }; ?>
-
-                                                <?php };
+                                                    <?php    };
+                                                    };
                                                 print_r($data);
                                                 ?>
                                             </select></div>
@@ -174,10 +147,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                                     <?php
                                                         } else { ?>
                                                         <option value="<?= $no_keg['id'] ?>"><?= $no_keg['no_keg']; ?> </option>
-                                                        }
-                                                    <?php }; ?>
+                                                <?php        };
 
-                                                <?php };
+                                                };
                                                 print_r($data);
                                                 ?>
                                             </select></div>
@@ -222,44 +194,48 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                             <input type="text" class="form-control" name="in_nama_keg" required><br>
                         </div>
                     </div>
-<div class="row" style="float:right">
+                <div class="row" style="float:right">
+                <div class="col-12">
                     <input class="btn btn-primary" type="submit" value="Tambah Kegiatan">
-                    </div>
+                    </div></div>
 
                 </form>
                 <br><br><br>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table" >
-                            <thead>
-                                <tr>
-                                    <th class="col col-md-3">No.</th>
-                                    <th class="col col-md-6">Nama Kegiatan</th>
-                                    <th class="col col-md-3">aksi</th>
-                                </tr>
-                            </thead class="">
-                            <tbody>
-                                <?php $i = 1;
-                                foreach ($datakeg as $row) : ?>
+
+                        <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
+                            <table class="table" >
+                                <thead>
                                     <tr>
-                                        <?php if ($i < 10) { ?>
-                                            <td class="col text-center col-3">0<?php echo $row["no_keg"]; ?></td>
-                                        <?php
-                                            } else { ?>
-                                            <td class="col text-center col-3"><?php echo $row["no_keg"]; ?></td>
-                                        <?php
-                                            }
-                                            ?>
-                                        <td class="col col-6"><?php echo $row["nama_kegiatan"]; ?></td>
-                                        <td class="col text-center col-3 btn btn-outline-danger"><a href="../back/delete_keg.php?id=<?php echo $row['id']; ?>">hapus</a></td>
+                                        <th class="col-3">NO.</th>
+                                        <th class="col-6">NAMA KEGIATAN</th>
+                                        <th class="col-3">AKSI</th>
                                     </tr>
-                                    <?php $i++; ?>
-
-                                <?php endforeach;
-                                ?>
-                            </tbody>
-
-                        </table>
+                                </thead class="">
+                            </table>
+                            <div class="tbod">
+                                <table class="table" >
+                                    <tbody class="">
+                                        <?php $i = 1;
+                                        foreach ($datakeg as $row) : ?>
+                                            <tr>
+                                                <?php if ($i < 10) { ?>
+                                                    <td class="col-2">0<?php echo $row["no_keg"]; ?></td>
+                                                <?php } else { ?>
+                                                    <td class="col-2"><?php echo $row["no_keg"]; ?></td>
+                                                <?php } ?>
+                                                <td class="col-7"><?php echo $row["nama_kegiatan"]; ?></td>
+                                                <td class="col-3">
+                                                    <a style="text-decoration:none;" onclick="return confirm('Hapus Data?');" href="../back/delete_keg.php?id=<?php echo $row['id']; ?>">Hapus</a>
+                                                </td>
+                                            </tr>
+                                            <?php $i++;
+                                            endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -296,10 +272,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                             <?php
                                                 } else { ?>
                                                 <option value="<?= $no_keg['id'] ?>"><?= $no_keg['no_keg']; ?> </option>
-                                                }
-                                            <?php }; ?>
-
-                                        <?php };
+                                                <?php
+                                                };
+                                             }; 
                                         print_r($data);
                                         ?>
                                     </select></div>

@@ -1,0 +1,42 @@
+.tbod{
+    border-radius: 40px;        
+    display:block;
+    max-height:241px;
+    overflow-x:hidden;
+    margin-top:-25px;
+}
+.tbod{
+    /* scrollbar-width: none; hidden */
+}
+.tbod::-webkit-scrollbar {
+    /* width: 0 !important; */
+    /* display:none; */
+}
+.tbod{
+    /* max-height:100px !important; */
+}
+tbody td:last-child,
+thead th:last-child,tr {
+    border: none;
+}
+thead{
+    
+    background-color:#286090;
+    color:white;
+    position: sticky;
+    top: 0;
+}
+
+.tbod tr td a{
+    color: white;
+    border-radius: 10px;
+    display:block;
+    text-decoration: none !important;
+    background-color: rgb(197, 86, 86) !important;
+    padding:7px !important;
+    box-sizing:border-box;
+    width:100%;
+}
+.tbod tr td a:hover{
+    background-color: rgb(240, 42, 42) !important;
+}
