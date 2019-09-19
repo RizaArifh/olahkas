@@ -29,11 +29,8 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+    <?php include "../element/boots.php" ?>
+
     <title>Sertifikasi</title>
 </head>
 
@@ -56,7 +53,7 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                    <label for=""class="control-label">Dana Yang Akan Dimasukan</label>
+                    <label for=""class="control-label">Dana Dimasukan</label>
                     </div>
                     <div class="col-md-8">
                     <input class="form-control" type="text" name="jumlah_tersedia"><br>
@@ -68,10 +65,12 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
                     <div class="col-md-8">
                     <input class="form-control" type="text" name="keterangan"><br>
                     </div></div>
-                    <input type="submit" value="Masukan">
+                    <div style="float:right">
+                    <input type="submit"  class="btn btn-primary" value="Masukan">
+                    </div>
                 </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
         
         <?php $i = 1; ?>
             <a href="../back/clear_orang.php">Clear Kegiatan</a>
@@ -117,10 +116,22 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
 
 <h1>KREDIT</h1>
             <form action="../back/insert_petty.php" method="post" autocomplete="off">
+            <div class="row">
+                    <div class="col-md-4">
                 <label for="tanggal">Tanggal :</label>
-                <input type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>"><br>
+                </div>
+                    <div class="col-md-8">
+                <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>"><br>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
                 <label for="No / Nama Kegiatan">Kegiatan / (No Bukti) : </label>
-                <select name="no_kegiatan" id="no_kegiatand" onChange="GetNo_kegiatand(this.value)" required>
+                </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-4">
+                <select name="no_kegiatan" class="form-control" id="no_kegiatand" onChange="GetNo_kegiatand(this.value)" required>
                     <option value="">Pilih</option>
                     <?php
                     $list_no_keg = "SELECT * FROM orang_kasbon";
@@ -139,20 +150,38 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
 
                     print_r($data);
                     ?>
-                </select>
-                <input type="text" name="nama_keg" id="nama_kegiatand"readonly> <br>
+                </select></div><div class="col-md-8">
+                <input type="text" class="form-control" name="nama_keg" id="nama_kegiatand"readonly> <br>
+                </div></div>
+                </div></div>
                 <?php include "../back/get_jml_sisa.php";?>
+                <div class="row">
+                    <div class="col-md-4">
                 <label for="">Jml Dana Yang Tersedia :</label>
-                <input type="text" name="harus_bayar" id="harus_bayar" value="<?=$tersisa?>"readonly> <br>
-
+                </div>
+                    <div class="col-md-8">
+                <input type="text" class="form-control" name="harus_bayar" id="harus_bayar" value="<?=$tersisa?>"readonly> <br>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
                 <label for="">Jumlah :</label>
-                <input type="text" name="dibayar" id="dibayar" onChange="updatekurang(this.value)" placeholder=""> <br>
-
+                </div>
+                    <div class="col-md-8">
+                <input type="text" class="form-control" name="dibayar" id="dibayar" onChange="updatekurang(this.value)" placeholder=""> <br>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
                 <label for="">Sisa:</label>
-                <input type="text" name="kurang" id="kurang" placeholder="-"readonly> <br>
-
-                <input type="submit" value="Masukan Data">
-
+                </div>
+                    <div class="col-md-8">
+                <input type="text" class="form-control" name="kurang" id="kurang" placeholder="-"readonly> <br>
+                </div>
+                </div>
+                <div style="float:right">
+                <input type="submit" class="btn btn-primary" value="Masukan Data">
+                </div>
             </form>
         
         </div>

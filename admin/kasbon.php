@@ -97,15 +97,16 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             </div><div class="col-md-8">
             <input type="text" name="kasbon" id="jmlk" class="form-control" placeholder="Masukan Jumlah Kas Bon" onChange="cek(this.value)" > <br>
             </div></div>
-
-            <input type="submit" value="Masukan Data">
-
+<div style="float:right">
+            <input type="submit"  class="btn btn-primary" value="Masukan Data">
+            </div>
         </form>
         </div>
         <div class="col-md-3">
         
         <?php $i = 1; ?>
         <h2>Tambah Orang</h2>
+        
             <form action="../back/tambah_orang.php" method="post">
             <div class="row">
                         <div class="col-4">
@@ -113,34 +114,44 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                         </div><div class="col-8">
                 <input class="form-control" type="text" name="in_nama" required><br>
                 </div></div>
-                <div class="row" style="float:right">
-                <input type="submit" value="Tambahkan">
+                <div class="row" >
+                <div class="col-12">
+                <input type="submit"style="float:right" value="Tambahkan">
+                </div>
                 </div>
             </form>
-            <a href="../back/clear_orang.php">clear orang</a>
-                
-            <table class="table1" border="1" cellpadding="10" cellspacing="0">
-
-                <tr>
-                    <th>No.</th>
-                    <th>Nama</th>
-                    <th>Kasbon</th>
-                    <th>aksi</th>
-                </tr>
-
+            <!-- <div class="row"> -->
+            <!-- <a href="../back/clear_orang.php">clear orang</a> -->
+            <!-- </div> --><br>
+            <div class="row">
+            <div class="col-md-12">
+            <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
+                            <table class="table" >
+                                <thead>
+                                    <tr>
+                                        <th class="col-3">NO.</th>
+                                        <th class="col-3">NAMA</th>
+                                        <th class="col-3">KASBON</th>
+                                        <th class="col-3">AKSI</th>
+                                    </tr>
+                                </thead class="">
+                            </table>
+                            <div class="tbod">
+                                <table class="table" >
+                                    <tbody class="">
                 <?php $i = 1; ?>
                 <?php foreach ($databon as $row) { ?>
                 <tr>
                     <?php if($i<10){?>
-                    <td>0<?php echo $row["no_orang"]; ?></td>    
+                    <td class="col-3">0<?php echo $row["no_orang"]; ?></td>    
                     <?php
                     }else{?>
-                    <td><?php echo $row["no_orang"]; ?></td>    
+                    <td class="col-3"><?php echo $row["no_orang"]; ?></td>    
                         <?php
                     }
                     ?>
 
-                    <td><?php echo $row["nama_orang"]; ?></td>
+                    <td class="col-3"><?php echo $row["nama_orang"]; ?></td>
                     <?php
                     $namak= $row["nama_orang"];
                     $sql2 = "SELECT * FROM data_transaksi WHERE subnama_kegiatan = '$namak'";
@@ -159,8 +170,8 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                       }
                     }
                     ?>
-                    <td><?=$kasbonn?></td>
-                    <td><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>">hapus</a></td>
+                    <td class="col-3"><?=$kasbonn?></td>
+                    <td class="col-3"><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>">hapus</a></td>
                 </tr>
                 <?php $i++; ?>
 
@@ -170,8 +181,12 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 ?>
 
             </table>
-        </div>
-    
+            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
     
 <div class="col-md-5">
 <h1>DEBET</h1>
@@ -235,9 +250,11 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 </div><div class="col-md-8">
                 <input type="text" name="kurang" id="kurang" class="form-control"placeholder="-"readonly> <br>
                 </div></div>
-                <div class="row">
-                <input type="submit" value="Masukan Data">
+                
+                <div style="float:right">
+                <input type="submit" class="btn btn-primary" value="Masukan Data">
                 </div>
+                
 
             </form>
         </div>

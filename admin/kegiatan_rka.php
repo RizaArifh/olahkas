@@ -175,7 +175,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <input class="form-control" type="text" name="keterangan" required><br>
                                 </div>
                             </div>
-                            <input type="submit" value="Masukan">
+                            <div style="float:right">
+                            <input class="btn btn-primary" type="submit" value="Masukan">
+                            </div>
                         </form>
                     </div>
                 </div>
