@@ -26,9 +26,7 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
     <?php include "../element/boots.php" ?>
 
     <title>Sertifikasi</title>
@@ -74,31 +72,35 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
         
         <?php $i = 1; ?>
             <a href="../back/clear_orang.php">Clear Kegiatan</a>
-                
-            <table class="table1" border="1" cellpadding="10" cellspacing="0">
-
-                <tr>
-                    <th>No.</th>
-                    <th>Nama Kegiatan</th>
-                    <th>aksi</th>
-                </tr>
-
+            <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
+                            <table class="table" >
+                                <thead>
+                                    <tr>
+                                        <th class="col-3">NO.</th>
+                                        <th class="col-6">NAMA KEGIATAN</th>
+                                        <th class="col-3">AKSI</th>
+                                    </tr>
+                                </thead class="">
+                            </table>
+                            <div class="tbod">
+                                <table class="table" >
+                                    <tbody class="">
                 <?php $i = 1; ?>
                 <?php foreach ($databon as $row) : ?>
                 <tr>
                     <?php if($i<10){?>
-                    <td>0<?php echo $row["no_orang"]; ?></td>    
+                    <td class="col-3">0<?php echo $row["no_orang"]; ?></td>    
                     <?php
                     }else{?>
-                    <td><?php echo $row["no_orang"]; ?></td>    
+                    <td class="col-3"><?php echo $row["no_orang"]; ?></td>    
                         <?php
                     }
                     ?>
                     
                     
 
-                    <td><?php echo $row["nama_orang"]; ?></td>
-                    <td><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>">hapus</a></td>
+                    <td class="col-6"><?php echo $row["nama_orang"]; ?></td>
+                    <td  class="col-3"><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>">hapus</a></td>
                 </tr>
                 <?php $i++; ?>
 
@@ -106,8 +108,11 @@ $databon = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 
                 // print_r($last_keg);
                 ?>
-
-            </table>
+ </tbody>
+                                </table>
+                            </div>
+                        </div>
+            
             
         </div>
     

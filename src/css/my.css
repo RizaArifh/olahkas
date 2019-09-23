@@ -37,6 +37,12 @@ thead{
     box-sizing:border-box;
     width:100%;
 }
+#a{
+    
+}
 .tbod tr td a:hover{
     background-color: rgb(240, 42, 42) !important;
+}
+.navis{
+    font-size: 5rem;
 }

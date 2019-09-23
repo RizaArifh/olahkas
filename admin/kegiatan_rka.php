@@ -9,9 +9,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
     <?php include "../element/boots.php" ?>
 
     <title>Kegiatan RKA</title>
@@ -24,6 +22,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
         ?>
         <div class="row">
             <div class="col-md-4">
+                
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#debet"><h1>DEBET</h1></a></li>
                     <li><a href="#input_dana"><h1>INPUT DANA</h1></a></li>
@@ -31,6 +30,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 <div class="tab-content">
                     <div id="debet" class="tab-pane fade in active">
                         <form action="../back/insert_rka.php" method="post" autocomplete="off">
+                        <br>
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="tanggal">Tanggal :</label>
