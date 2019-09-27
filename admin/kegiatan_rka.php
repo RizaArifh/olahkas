@@ -1,6 +1,7 @@
 <?php
 include "../back/conn.php";
 $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -187,7 +188,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
             
                 <?php $i = 1; ?>
                 <h2>Tambah Kegiatan</h2>
-                <form action="../back/tambah_kegiatan.php" method="post">
+                <form action="../back/tambah_kegiatan.php" method="post" autocomplete="off">
                     <div class="row">
                         <div class="col-4">
                             <label for="">Kegiatan </label>
@@ -222,9 +223,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                         <?php $i = 1;
                                         foreach ($datakeg as $row) : ?>
                                             <tr>
-                                                <?php if ($i < 10) { ?>
+                                                <?php if ($row["no_keg"] < 10) { ?>
                                                     <td class="col-2">0<?php echo $row["no_keg"]; ?></td>
-                                                <?php } else { ?>
+                                                <?php } else {?>
                                                     <td class="col-2"><?php echo $row["no_keg"]; ?></td>
                                                 <?php } ?>
                                                 <td class="col-7"><?php echo $row["nama_kegiatan"]; ?></td>
@@ -487,7 +488,19 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
 
             }
         </script>
-
+<?php
+if(isset($_GET["hasil"])){
+     if($_GET["hasil"] == "ada_sama"){?><script>
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Nama Kegiatan Sudah Ada Yang Sama',
+        }) </script>
+        <?php
+     } else {
+         echo "Data berhasil diinput";
+     }
+ }?>
 </body>
 
 </html>

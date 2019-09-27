@@ -169,7 +169,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                     }
                     ?>
                     <td class="col-3"><?=$kasbonn?></td>
-                    <td class="col-3"><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>">hapus</a></td>
+                    <td class="col-3"><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>"onclick="return confirm('Yakin Ingin Menghapus?')" id="$i">hapus</a></td>
                 </tr>
                 <?php $i++; ?>
 
@@ -389,7 +389,27 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
         };
     
     </script>
-    
+    <?php
+if(isset($_GET["hapus"])){
+     if($_GET["hapus"] == "gagal"){?><script>
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Kas Bon Harus Di Lunasi Terlebih Dahulu',
+        }) </script>
+        <?php
+     } else {
+         ?>
+         <script>
+        
+        Swal.fire({
+            type: 'success',
+            title: 'Oops...',
+            html: 'Kas Bon Harus Di Lunasi Terlebih Dahulu',
+        })
+        </script><?php
+     }
+ }?>
 </body>
 
 </html>

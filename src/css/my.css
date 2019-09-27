@@ -4,6 +4,7 @@
     max-height:241px;
     overflow-x:hidden;
     margin-top:-25px;
+    text-align: center;
 }
 .tbod{
     /* scrollbar-width: none; hidden */
@@ -20,17 +21,18 @@ thead th:last-child,tr {
     border: none;
 }
 thead{
-    
     background-color:#286090;
     color:white;
     position: sticky;
     top: 0;
 }
-
+table thead tr th{
+    text-align: center;
+}
 .tbod tr td a{
     color: white;
     border-radius: 10px;
-    display:block;
+    display:inline;
     text-decoration: none !important;
     background-color: rgb(197, 86, 86) !important;
     padding:7px !important;

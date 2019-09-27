@@ -15,10 +15,22 @@ if($last_ida<=0){
 $l_1a=$last_ida+1;
 }
 
-$data = mysqli_query($con,
-"INSERT INTO kegiatan (no_keg,nama_kegiatan) VALUES('$l_1a','$nama')");
+$datacek = mysqli_query($con,
+"SELECT * FROM kegiatan WHERE nama_kegiatan='$nama'");
+$num=mysqli_num_rows($datacek);
+ 
+if($num > 0){ // user ditemukan
+
+    header("location:../admin/kegiatan_rka.php?hasil=ada_sama");}
+else{
+    $data = mysqli_query($con,
+    "INSERT INTO kegiatan (no_keg,nama_kegiatan) VALUES('$l_1a','$nama')");
+    
+header("location:../admin/kegiatan_rka.php");
+}
+
+
 
 
 // print_r($nama);
-header("location:../admin/kegiatan_rka.php");
 ?>
