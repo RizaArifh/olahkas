@@ -12,5 +12,5 @@ $data = mysqli_query($con,
 "INSERT INTO data_transaksi (tanggal,ko,de,nama_kegiatan_keterangan,subnama_kegiatan,debet,keterangan) VALUES('$tanggall','D','1','Kas Kegiatan Masuk','$nama_keg','$didebet','$keterangan')");
 
 
-header("location:../admin/data_transaksi.php");
+header("location:../admin/kegiatan_rka.php");
 ?>

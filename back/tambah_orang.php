@@ -15,10 +15,18 @@ if($last_ida<=0){
 $l_1a=$last_ida+1;
 }
 
-$data = mysqli_query($con,
-"INSERT INTO orang_kasbon (no_orang,nama_orang) VALUES('$l_1a','$nama')");
 
+$datacek = mysqli_query($con,
+"SELECT * FROM orang_kasbon WHERE nama_orang='$nama'");
+$num=mysqli_num_rows($datacek);
+ 
+if($num > 0){ // user ditemukan
 
-// print_r($nama);
+    header("location:../admin/kasbon.php?hasil=ada_sama");}
+else{
+    $data = mysqli_query($con,
+    "INSERT INTO orang_kasbon (no_orang,nama_orang) VALUES('$l_1a','$nama')");
+    
 header("location:../admin/kasbon.php");
+}
 ?>

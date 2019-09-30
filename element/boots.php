@@ -23,12 +23,13 @@
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="text/javascript" src="../src/js/outs.js"></script>
     <script src="../src/js/outs.js"></script>
-    <script type="text/javascript" src="../src/sweetalert2.all.js"></script>
+    <script type="text/javascript" src="../src/sweetalert/sweetalert2.all.js"></script>
     <!-- <script type="text/javascript" src="../src/js/xlsx.core.min.js"></script> -->
     <script type="text/javascript" src="../src/js/tableexport.js"></script>
     <script type="text/javascript" src="../src/js/tableexport.min.js"></script>
     <script type="text/javascript"  src="../src/js/FileSaver.js"></script>
     <script type="text/javascript" src="../src/js/FileSaver.min.js"></script>
+    
     <!-- <script type="text/javascript" src="../src/js/jquery-3.1.1.min.js"></script> -->
     <!-- <script type="text/javascript" src="../src/js/bootstrap.min_1.js"></script> -->
  

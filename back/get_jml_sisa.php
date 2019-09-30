@@ -1,4 +1,4 @@
-<?php $_sql2 = "SELECT * FROM data_transaksi WHERE de='2'";
+<?php $_sql2 = "SELECT * FROM data_transaksi WHERE de='3' or de='2'";
 
       $_data2 = mysqli_query($con,$_sql2);
       

@@ -51,7 +51,7 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
               </tr>
 </thead>
           </table>
-          <div class="tbod">
+          <div class="tbod datas">
             <table class="table-fixed table">
             <thead hidden>
               <tr>

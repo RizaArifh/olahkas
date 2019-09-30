@@ -31,8 +31,10 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
     
     
     <?php include "../element/boots.php";?>
-    <style>
-}</style>
+    <style>label{
+        padding:5px 3px;
+    }
+</style>
     <title>Kasbon</title>
 </head>
 
@@ -79,10 +81,10 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 print_r($data);
                 ?>
             </select></div><div class="col-md-8">
-            <input type="text" name="nama_orang" id="nama_orangk" class="form-control" readonly>>
+            <input type="text" name="nama_orang" id="nama_orangk" class="form-control" readonly>
             </div>
             </div></div></div>
-            <?php include "../back/get_jml_sisa.php";?>
+            <?php include "../back/get_jml_sisa.php";?><br>
             <div class="row">
         <div class="col-md-4">
             <label for="">Jml Dana Yang Tersedia</label>
@@ -93,7 +95,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
         <div class="col-md-4">
             <label for="">Jml Kas Bon Sekarang</label>
             </div><div class="col-md-8">
-            <input type="text" name="kasbon" id="jmlk" class="form-control" placeholder="Masukan Jumlah Kas Bon" onChange="cek(this.value)" > <br>
+            <input type="text" name="kasbon" id="jmlk" class="form-control" placeholder="Masukan Jumlah Kas Bon" onChange="cek(this.value)" required > <br>
             </div></div>
 <div style="float:right">
             <input type="submit"  class="btn btn-primary" value="Masukan Data">
@@ -114,7 +116,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 </div></div>
                 <div class="row" >
                 <div class="col-12">
-                <input type="submit"style="float:right" value="Tambahkan">
+                <input type="submit"style="float:right" class="btn btn-primary" value="Tambahkan">
                 </div>
                 </div>
             </form>
@@ -191,13 +193,13 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             <form action="../back/insert_kasbon.php" method="post">
             <div class="row">
                 <div class="col-md-4">
-                <label for="tanggal">Tanggal :</label>
+                <label for="tanggal">Tanggal </label>
                 </div><div class="col-md-8">
                 <input type="text" name="tanggal" class="form-control"value="<?php echo date('d-m-Y'); ?>"readonly><br>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
-                <label for="No / Nama Kegiatan">No / Nama : </label>
+                <label for="No / Nama Kegiatan">No / Nama  </label>
                 </div>
                 <div class="col-md-8">
                     <div class="row">
@@ -226,25 +228,35 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 </div></div></div></div>
                 <div class="row">
                 <div class="col-md-4">
-                <label for="">Jml Yang Harus Di Bayar :</label>
+                <label for="">Jml Yang Harus Di Bayar </label>
                 </div><div class="col-md-8">
                 <input type="text" name="harus_bayar" id="harus_bayar" class="form-control" placeholder="-" value="0"> <br>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
-                <label for="">Jml Sudah Di Bayar :</label>
+                <label for="">Jml Sudah Di Bayar </label>
                 </div><div class="col-md-8">
                 <input type="text" name="sudah_bayar" id="sudah_bayar" placeholder="-" class="form-control"readonly> <br>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
-                <label for="">Jml DiBayar Sekarang :</label>
-                </div><div class="col-md-8">
-                <input type="text" name="dibayar" class="form-control"id="dibayar" onChange="updatekurang2(this.value)" placeholder=""> <br>
+                <label for="">Jml DiBayar Sekarang </label>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                <div class="col-md-9">
+                <div class="input-group mb-3">
+                <input type="text" name="dibayar" class="form-control"id="dibayar" onChange="updatekurang2(this.value)" placeholder="" required> <br>
+                </div></div><div class="col-md-3">
+                <div class="input-group-append">
+                <button class="btn btn-success" type="button" onclick="lunas()" id="button-lunas">Lunas</button>
+                </div>
+                </div>
+                </div>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
-                <label for="">Kurang Di Setor:</label>
+                <label for="">Kurang Di Setor</label>
                 </div><div class="col-md-8">
                 <input type="text" name="kurang" id="kurang" class="form-control"placeholder="-"readonly> <br>
                 </div></div>
@@ -339,7 +351,10 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             // );
             // }
         }
-        
+        function lunas(){
+            var tagihan = $("#harus_bayar").val();
+            $('#dibayar').val(tagihan);
+        }
 
         
         
@@ -350,6 +365,16 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             // if (kurang <= 0) {
             //     kurang = (kurang * -1);
             // }
+            
+            if (kurang==0){
+                Swal.fire({
+                type: 'error',
+                title: 'Oops...',
+                html: 'Jumlah Yang Di Bayar <br> Tidak Boleh 0',
+                });
+            
+                $("#dibayar").val('');
+            }
             if (kurang<0){
                 Swal.fire({
                 type: 'error',
@@ -405,11 +430,25 @@ if(isset($_GET["hapus"])){
         Swal.fire({
             type: 'success',
             title: 'Oops...',
-            html: 'Kas Bon Harus Di Lunasi Terlebih Dahulu',
+            html: 'Orang Telah Terhapus',
         })
         </script><?php
      }
  }?>
+ <?php
+if(isset($_GET["hasil"])){
+     if($_GET["hasil"] == "ada_sama"){?><script>
+        Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Nama Kegiatan Sudah Ada Yang Sama',
+        }) </script>
+        <?php
+     } else {
+         echo "Data berhasil diinput";
+     }
+ }?>
+ 
 </body>
 
 </html>

@@ -15,6 +15,7 @@
 }
 .tbod{
     /* max-height:100px !important; */
+    margin-top:-20px;
 }
 tbody td:last-child,
 thead th:last-child,tr {
@@ -45,6 +46,11 @@ table thead tr th{
 .tbod tr td a:hover{
     background-color: rgb(240, 42, 42) !important;
 }
-.navis{
-    font-size: 5rem;
+
+.table_rekap_keg{
+
+text-align:center;
+}
+.datas{
+    max-height:400px;
 }

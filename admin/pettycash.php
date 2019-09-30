@@ -57,7 +57,9 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                 <!-- <button id="export" onclick="export()"></button> -->
                 
                 <?php $i = 1; ?>
-                <a href="../back/clear_orang.php">Clear Kegiatan</a>
+                <a href="../back/clear_orang.php" class="btn btn-danger">Clear Kegiatan</a>
+                <a href="../admin/akhiripetty.php" class="btn btn-warning">Akhiri Petty Sekarang</a><br><br>
+                
                 <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
 
                     <table class="table">
@@ -139,7 +141,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                             <label for="">Jml Dana Yang Tersedia</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="harus_bayar" id="dana" value="<?= $tersisa ?>" readonly> <br>
+                            <input type="text" class="form-control" name="harus_bayar" id="dana" value="<?=$tersisa ?>" readonly> <br>
                         </div>
                     </div>
                     <div class="row">
@@ -171,35 +173,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                    
                 
         <script>
-            function GetNo_kegiatand(id) {
-                if (id.length == 0) {
-                    $('#nama_kegiatand').val('Pilih No Kegiatan');
-                    return;
-                } else {
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            var myArr = JSON.parse(this.responseText);
-                            console.log(myArr);
-                            // removeOptions(document.getElementById("no_kegiatan"));
-                            set_nama_kegiatand(myArr);
-                        }
-                    };
-                    xmlhttp.open("GET", "../back/GetNo_orang.php?id=" + id, true);
-                    xmlhttp.send();
-                };
-            };
-
-            function set_nama_kegiatand(data) {
-                // debugger;   
-                // for (var i = 0; i < data.length; i++) {
-                // $('#no_kegiatan').append(
-                $('#nama_kegiatand').val(data[0].nama);
-
-                $('#sudah_bayar').val(data[2].jumlahk)
-                // );
-                // }
-            }
+            
 
           
             function updatekurang(keluar) {

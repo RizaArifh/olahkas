@@ -13,21 +13,28 @@ $nama_get=$_GET['nama'];
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php include "../element/boots.php"?>
     <title>Rekapitulasi Kegiatan RKA</title>
+    <style>th{text-align:center;}</style>
+    
 </head>
 <body>
+    <div class="container-fluid">
 <?php
     include "../element/_nav.php"
     ?>
     
     <h2>Detail Kasbon Atas Nama : <?= $nama_get;?></h2>
     <h3>Per : <?= date('d-m-Y'); ?></h3> 
-    
-    <a href="../back/clear_data_sertifikasi.php">Clear Data</a>
+    <a href="rekap_kasbon.php"class="btn btn-warning">Back</a>
+    <a class="btn btn-danger" href="../back/clear_data_kasbon_orang.php?nama=<?=$nama_get?>">Clear Data</a>
     <?php
     $k=0;
     ?>
-    <table class="table1" border="1" align=center cellpadding="10" cellspacing="0" id="tabel_pertama">
-        <tr>
+    
+<div class="row justify-content-center">
+
+<div class="table_rekap_keg"style="width:70%;" >
+<table class=" table table-hover" style="height:40%;">
+<tr style="background:#2891DD; color:white">
             <th>Tanggal</th>
             <th>Nama</th>
             <th>Keterangan</th>
@@ -71,6 +78,6 @@ $nama_get=$_GET['nama'];
     }?>
         </tbody>
     </table>
-    
+</div></div></div>
 </body>
 </html>

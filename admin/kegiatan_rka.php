@@ -93,7 +93,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <label for="">Jml DiDebet Sekarang :</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" name="didebet" id="didebet" class="form-control" onChange="updatekurang(this.value)" placeholder=""> <br>
+                                    <input type="text" name="didebet" id="didebet" class="form-control" onChange="updatekurang(this.value)" placeholder="" required> <br>
                                 </div>
                             </div>
                             <div class="row">
@@ -165,7 +165,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <label for="" class="control-label">Jumlah Dana</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input class="form-control" type="text" name="jumlah_tersedia"><br>
+                                    <input class="form-control " type="text" name="jumlah_tersedia" required><br>
                                 </div>
                             </div>
                             <div class="row">
@@ -316,7 +316,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                             <label for=""></label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="kredit" id="kredit" onChange="updatesaldo(this.value)" placeholder=""> <br>
+                            <input type="text" class="form-control" name="kredit" id="kredit" onChange="updatesaldo(this.value)" placeholder="" required> <br>
                         </div>
                     </div>
                     <div class="row">
@@ -488,6 +488,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
 
             }
         </script>
+        
 <?php
 if(isset($_GET["hasil"])){
      if($_GET["hasil"] == "ada_sama"){?><script>
@@ -501,6 +502,7 @@ if(isset($_GET["hasil"])){
          echo "Data berhasil diinput";
      }
  }?>
+ 
 </body>
 
 </html>

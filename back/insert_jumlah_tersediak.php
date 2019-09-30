@@ -12,5 +12,5 @@ $data = mysqli_query($con,
 
 
 
-header("location:../admin/data_transaksi.php");
+header("location:../admin/pettycash.php");
 ?>

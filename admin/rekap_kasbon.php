@@ -14,6 +14,7 @@ include "../back/conn.php";
     <title>Rekapitulasi Kegiatan RKA</title>
 </head>
 <body>
+    <div class="container-fluid">
 <?php
     include "../element/_nav.php"
     ?>
@@ -21,8 +22,12 @@ include "../back/conn.php";
     <h3>Per : <?= date('d-m-Y'); ?></h3> 
     
     <a href="../back/clear_data_sertifikasi.php">Clear Data</a>
-    <table class="table1" border="1" align=center cellpadding="10" cellspacing="0" id="tabel_pertama">
-        <tr>
+    
+<div class="row justify-content-center">
+
+<div class="table_rekap_keg"style="width:70%;" >
+<table class=" table table-hover" style="height:40%;">
+        <tr style="background:#2891DD; color:white;">
             <th>Tanggal</th>
             <th>Nama</th>
             <th>Pinjam</th>
@@ -69,5 +74,6 @@ include "../back/conn.php";
     }?>
         </tbody>
     </table>
+    </div></div></div>
 </body>
 </html>
