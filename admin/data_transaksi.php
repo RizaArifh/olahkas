@@ -28,7 +28,7 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
 
     include "../element/_nav.php"
     ?>
-    <a href="../back/clear_data.php">Clear Data</a>
+    <a class="btn btn-danger" href="../back/clear_data.php">Clear Data</a><br><br>
     <!-- <div style="max-height:100px;overflow:hidden;overflow-y:auto">     -->
 
     <div class="row">

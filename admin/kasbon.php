@@ -230,7 +230,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 <div class="col-md-4">
                 <label for="">Jml Yang Harus Di Bayar </label>
                 </div><div class="col-md-8">
-                <input type="text" name="harus_bayar" id="harus_bayar" class="form-control" placeholder="-" value="0"> <br>
+                <input type="text" name="harus_bayar" id="harus_bayar" class="form-control" placeholder="-" value="0" readonly> <br>
                 </div></div>
                 <div class="row">
                 <div class="col-md-4">
@@ -359,6 +359,15 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
         
         
         function updatekurang2(dibayar) {
+            if(isNaN(dibayar)){
+                    Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Masukan Harus Angka',
+            
+        });
+        $("#dibayar").val('');
+        }else{
             var hrs_bayar = $("#harus_bayar").val();
             var sdh_bayar = $("#sudah_bayar").val();
             var kurang = (hrs_bayar-sdh_bayar-dibayar);
@@ -390,9 +399,17 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             }
             
 
-        };
+        };}
         function cek(bon) {
+            if(isNaN(bon)){
+                    Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Masukan Harus Angka',
             
+        });
+        $("#jmlk").val('');
+        }else{
             var dana = $("#jmlad").val();
             var kurang = (dana-bon);
             // if (kurang <= 0) {
@@ -410,7 +427,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             
             
             
-
+        }
         };
     
     </script>

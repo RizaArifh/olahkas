@@ -1,6 +1,8 @@
 <?php
 include "../back/conn.php";
-$datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
+include "../back/get_jml_sisa.php";
+$datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keterangan='$last'");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,44 +23,46 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
         include "../element/_nav.php"
         ?>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h1>Masukan Dana PettyCash</h1>
                 <form action="../back/insert_jumlah_tersediak.php" method="post" autocomplete="off" class="form-horizontal">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <label for="tanggal" class="control-label">Tanggal</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             <input class="form-control" type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>"><br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <label for="" class="control-label">Dana Dimasukan</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-7">
                             <input class="form-control" type="text" name="jumlah_tersedia" value="25000000" readonly><br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
-                            <label for="" class="control-label">Keterangan </label>
+                        <div class="col-md-5">
+                            <label for="" class="control-label">Masukkan Petty Ke </label>
                         </div>
-                        <div class="col-md-8">
-                            <input class="form-control" type="text" name="keterangan"><br>
+                        <div class="col-md-7">
+                            <input class="form-control" type="text" name="keterangan" value="<?=$last+1?>"><br>
                         </div>
                     </div>
                     <div style="float:right">
                         <input type="submit" class="btn btn-primary" value="Masukan">
                     </div>
                 </form>
+                <a style="float:left;" href="../back/clear_dana_petty.php" class="btn btn-danger">Clear Dana Petty</a>
             </div>
             <div class="col-md-4">
                 <!-- <button id="export" onclick="export()"></button> -->
                 
                 <?php $i = 1; ?>
-                <a href="../back/clear_orang.php" class="btn btn-danger">Clear Kegiatan</a>
-                <a href="../admin/akhiripetty.php" class="btn btn-warning">Akhiri Petty Sekarang</a><br><br>
+                <a href="../back/clear_petty.php" class="btn btn-danger">Clear Petty</a>
+                <a href="../admin/akhiripetty.php" class="btn btn-warning">Akhiri Petty Sekarang</a>
+                <br><br>
                 
                 <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
 
@@ -102,7 +106,8 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                         </div>
                     </div>
 
-                </div>
+                </div><br>
+                <a href="../back/clear_petty_total.php" class="btn btn-danger">Clear Petty Total</a>
             </div>
 
 
@@ -115,7 +120,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                             <label for="tanggal">Tanggal :</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>"><br>
+                            <input type="date" class="form-control" name="tanggal" value="<?php echo date('d-m-Y');?>" style="padding:0px 12px;"><br>
                         </div>
                     </div>
                     <div class="row">
@@ -123,7 +128,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                             <label for="No / Nama Kegiatan"> Nama Kegiatan</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="nama_keg" id="nama_kegiatand"> <br>
+                            <input type="text" class="form-control" name="nama_keg" id="nama_kegiatand" required> <br>
                         </div>
                     </div>
                     <div class="row">
@@ -131,11 +136,11 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                             <label for="Nama Penerima">Nama Penerima </label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="nama_penerima" id="nama_penerima"> <br>
+                            <input type="text" class="form-control" name="nama_penerima" id="nama_penerima" required> <br>
                         </div>
                     </div>
 
-                    <?php include "../back/get_jml_sisa.php"; ?>
+                    
                     <div class="row">
                         <div class="col-md-4">
                             <label for="">Jml Dana Yang Tersedia</label>
@@ -149,7 +154,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                             <label for="">Jumlah :</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="jumlah" id="jumlah" onChange="updatekurang(this.value)" placeholder=""> <br>
+                            <input type="text" class="form-control" name="jumlah" id="jumlah" onChange="updatekurang(this.value)" placeholder="" required> <br>
                         </div>
                     </div>
                     <div class="row">
@@ -160,6 +165,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                             <input type="text" class="form-control" name="kurang" id="kurang" placeholder="-" readonly> <br>
                         </div>
                     </div>
+                    <input type="text" name="sesi_petty" value="<?=$last?>" hidden>
                     <div style="float:right">
                         <input type="submit" class="btn btn-primary" value="Masukan Data">
                     </div>
@@ -177,6 +183,14 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
 
           
             function updatekurang(keluar) {
+                if(isNaN(keluar)){
+                    Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Masukan Harus Angka',
+        });
+        $("#jumlah").val('');
+                }else{
                 var dana = $("#dana").val();
                 var kurang = (dana - keluar);
                 if (kurang < 0) {
@@ -190,7 +204,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                 } else {
                     $("#kurang").val(kurang);
                 }
-            };
+            };};
 
             function updatesaldo(kredit) {
                 var jumlahada = $("#jmlad").val();
@@ -201,7 +215,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3'");
                 }
                 $("#saldo").val(saldo);
             };
-
+            
         </script>
 </body>
 

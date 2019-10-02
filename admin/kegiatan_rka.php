@@ -118,7 +118,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                     </div>
                     <div id="input_dana" class="tab-pane fade">
                         <h2>Masukan Dana Kegiatan RKA</h2>
-                        <form action="../back/insert_jumlah_tersedia.php" method="post" autocomplete="off" class="form-horizontal">
+                        <form action="../back/insert_jumlah_tersedia.php" method="post" autocomplete="off" class="form-horizontal" autocomplete="off">
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="tanggal" class="control-label">Tanggal</label>
@@ -155,7 +155,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                                 ?>
                                             </select></div>
                                         <div class="col-md-8">
-                                            <input style="" class="form-control" type="text" name="nama_keg" id="nama_kegiatan2"><br>
+                                            <input style="" class="form-control" type="text" name="nama_keg" id="nama_kegiatan2" readonly><br>
                                         </div>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <label for="" class="control-label">Jumlah Dana</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input class="form-control " type="text" name="jumlah_tersedia" required><br>
+                                    <input class="form-control " type="text" name="jumlah_tersedia" onchange="cekangka(this.value)" required><br>
                                 </div>
                             </div>
                             <div class="row">
@@ -292,7 +292,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                             <label for="">Sub Kegiatan</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" name="sub_kegiatan" class="form-control" placeholder=""> <br>
+                            <input type="text" name="sub_kegiatan" class="form-control" placeholder="" required> <br>
                         </div>
                     </div>
                     <div class="row">
@@ -313,7 +313,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <label for=""></label>
+                            <label for="">Keluarkan </label>
                         </div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="kredit" id="kredit" onChange="updatesaldo(this.value)" placeholder="" required> <br>
@@ -395,8 +395,27 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 // );
                 // }
             };
-
+function cekangka(angka){
+    if(isNaN(angka)){
+                    Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Masukan Harus Angka',
+            
+        });
+        $("#didebet").val('');
+        }else{}
+}
             function updatekurang(debet) {
+                if(isNaN(debet)){
+                    Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Masukan Harus Angka',
+            
+        });
+        $("#didebet").val('');
+        }else{
                 var jmlrkaa = $("#jmlrka").val();
                 var sdhdebeta = $("#sudah_debet").val();
                 var kurang = (jmlrkaa - sdhdebeta - debet);
@@ -411,9 +430,18 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 } else {
                     $("#kurang").val(kurang);
                 }
-            };
+            };}
 
             function updatesaldo(kredit) {
+                if(isNaN(kredit)){
+                    Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            html: 'Masukan Harus Angka',
+            
+        });
+        $("#kredit").val('');
+        }else{ 
                 var jumlahada = $("#jmlad").val();
                 var jumlahkredit = $("#jmlk").val();
                 var saldo = (jumlahada - jumlahkredit - kredit);
@@ -429,7 +457,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                     $("#saldo").val(saldo);
                 }
 
-            };
+            };}
             // Change the selector if needed
             var $table = $('table'),
                 $bodyCells = $table.find('tbody tr:first').children(),

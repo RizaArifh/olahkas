@@ -1,4 +1,12 @@
+<?php
 
+if(session_status() !== PHP_SESSION_ACTIVE){
+session_start();
+}else{
+if($_SESSION['status']=='login'){
+    header("location:admin/index.php");
+}}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +37,7 @@
 }
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
     body{
-        height: 70vh;
+        height: 100vh;
         background: #092756;
 	background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
 	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
@@ -55,15 +63,7 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
     <script type="text/javascript" src="../src/sweetalert/sweetalert2.all.js"></script>
 </head>
 <body>
-<?php
-session_start();
-if($_SESSION['status']=='login'){
-    
-    
-    header("location:admin/index.php");
-    
-}
-?>
+
 <div class="login">
     <div class="b">
 	<h1>Login</h1>

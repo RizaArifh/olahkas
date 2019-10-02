@@ -20,7 +20,7 @@
         // $jumlah=$jumlah+$row['debet'];
         $jumlahk=$jumlahk+$row['kredit'];
       }
-      $sql3 = "SELECT * FROM data_transaksi WHERE subnama_kegiatan = '$namak' and de='4'";
+      $sql3 = "SELECT * FROM data_transaksi WHERE subnama_kegiatan = '$namak' and de='1'";
       $data3 = mysqli_query($con,$sql3);
       $px=0;
       while ($row = mysqli_fetch_array($data3)) {
