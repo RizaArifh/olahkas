@@ -64,7 +64,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                 <a href="../admin/akhiripetty.php" class="btn btn-warning">Lihat Laporan Petty</a>
                 <br><br>
 
-                <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
+                <div style="border:0.5px solid grey;border-radius:10px; overflow:hidden;">
 
                     <table class="table">
                         <thead>

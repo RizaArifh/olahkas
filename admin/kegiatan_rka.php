@@ -37,7 +37,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <label for="tanggal">Tanggal :</label>
                                 </div>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly>
+                                    <input type="date" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>">
                                 </div>
                             </div>
                             <br>
@@ -77,7 +77,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <label for="">Jml Sesuai RKA :</label>
                                 </div>
                                 <div class="col-lg-8">
-                                    <input type="text" name="anggaran_rka" class="form-control" id="jmlrka" placeholder="-"> <br>
+                                    <input type="text" name="anggaran_rka" class="form-control" id="jmlrka" placeholder="-" readonly> <br>
                                 </div>
                             </div>
                             <div class="row">
@@ -360,8 +360,11 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 // for (var i = 0; i < data.length; i++) {
                 // $('#no_kegiatan').append(
                 $('#nama_kegiatand').val(data[0].nama);
+
+                // $('#jmlrka').val(convertToRupiah(data[2].seharusnya));
+                // $('#sudah_debet').val(convertToRupiah(data[1].jumlah));
                 $('#jmlrka').val(data[2].seharusnya);
-                $('#sudah_debet').val(data[1].jumlah)
+                $('#sudah_debet').val(data[1].jumlah);
                 // );
                 // }
             }
@@ -514,7 +517,15 @@ function cekangka(angka){
 
                 $('#nama_kegiatan2').val(data[0].nama);
 
-            }
+            };
+            
+//             function convertToRupiah(angka)
+// {
+// 	var rupiah = '';		
+// 	var angkarev = angka.toString().split('').reverse().join('');
+// 	for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+// 	return rupiah.split('',rupiah.length-1).reverse().join('');
+// }
         </script>
         
 <?php

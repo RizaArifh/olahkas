@@ -224,7 +224,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                     print_r($data);
                     ?>
                 </select></div><div class="col-lg-8">
-                <input type="text" nam  e="nama_orang" class="form-control" id="nama_orangd"readonly> <br>
+                <input type="text" name="nama_orang" class="form-control" id="nama_orangd"readonly> <br>
                 </div></div></div></div>
                 <div class="row">
                 <div class="col-lg-4">

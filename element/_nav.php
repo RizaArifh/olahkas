@@ -4,7 +4,7 @@ if($_SESSION['status']!='login'){
     header("location:../index.php");
 }
 ?>
-<div class="row navix">
+<div class="row navix " style="margin-top:1%;">
     <div class="col col-md-7">      
     <a href="../admin/kegiatan_rka.php" class="btn btn-primary btn-md" >Kegiatan Sesuai RKA</a>  
         <a href="../admin/kasbon.php" class="btn btn-primary btn-md">KAS BON</a>

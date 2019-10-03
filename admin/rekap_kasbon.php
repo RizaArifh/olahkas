@@ -13,6 +13,7 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de=2 group b
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <?php include "../element/boots.php" ?>
     <title>Rekapitulasi Kegiatan RKA</title>
+    <style>th{text-align:center}</style>
 </head>
 
 <body>
@@ -79,6 +80,7 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de=2 group b
             </div>
         </div>
     </div>
+    
 </body>
 
 </html>

@@ -94,6 +94,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
 
     <div class="row justify-content-center">
       <div class="row" style="width:98%;">
+      
         <div class="table_rekap_keg" style="width:100%;">
           <div class="card " style="border:0.2px solid white;border-radius:10px; overflow:hidden;font-size:17px;">
             <table class="table-hover table-bordered">
