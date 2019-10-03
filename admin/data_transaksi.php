@@ -1,8 +1,8 @@
 <?php
 
 include "../back/conn.php";
-$datatotal = mysqli_query($con, "SElECT * FROM data_transaksi order by id");
-$datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('4') order by id");
+// $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi order by id");
+$datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where nama_kegiatan_keterangan not in ('Dana Masuk Kegiatan RKA') order by id");
 
 ?>
 
@@ -17,7 +17,9 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
   <?php include "../element/boots.php" ?>
 
   <style>
-
+td{
+  style="text-align:center"
+}
   </style>
 
   <title>Document</title>
@@ -48,32 +50,18 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
                 <th class="col-lg-1">Debet</th>
                 <th class="col-lg-1">Kredit</th>
                 <th class="col-lg-1">Saldo</th>
-                <th class="col-lg-2">Keterangan</th>
+                <th class="col-lg-1">Keterangan</th>
               </tr>
             </thead>
           </table>
           <div class="tbod datas">
             <table class="table-fixed table">
-              <thead hidden>
-                <tr>
-                  <th class="col-lg-1">No.</th>
-                  <th class="col-lg-1">Aksi</th>
-                  <th class="col-lg-1">Tanggal</th>
-                  <th class="col-lg-1">Kode</th>
-                  <th class="col-lg-2">Nama / Kegiatan / Keterangan</th>
-                  <th class="col-lg-2">Sub Nama Kegiatan</th>
-                  <th class="col-lg-1">Debet</th>
-                  <th class="col-lg-1">Kredit</th>
-                  <th class="col-lg-1">Saldo</th>
-                  <th class="col-lg-2">Keterangan</th>
-                </tr>
-              </thead>
               <tbody>
                 <?php $i = 1;
                 $saldo = 0; ?>
                 <?php foreach ($datatotal as $row) : ?>
-                  <tr>
-                    <td class="col-lg-1"><?php echo $i; ?></td>
+                  <tr >
+                    <td class="col-lg-1" style="width:8.5%"><?php echo $i; ?></td>
                     <td class="col-lg-1">
                       <a id="a" href="../back/hapus.php?id=<?php echo $row["id"]; ?>" onclick="return confirm ('yakin tak?');">hapus</a>
                     </td>
@@ -101,7 +89,7 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
     </div>
   </div>
   <script>
-    $('#ss').tableExport();
+
   </script>
   </div>
 </body>
