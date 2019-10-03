@@ -155,7 +155,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
                                     } else {
                                         echo 'RP 25.000.000,00';
                                     } ?></th>
-                                <th colspan="2" style="text-align:left;padding-left:1.75%;"><?php if ($num > 0) {
+                                <th colspan="2" style="text-align:left;padding-left:4.2%;"><?php if ($num > 0) {
                                                                                                 echo rupiah($sis);
                                                                                             } else {
                                                                                                 echo 'RP 25.000.000,00';
