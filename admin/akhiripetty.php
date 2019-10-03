@@ -99,7 +99,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
             <table class="table-hover table-bordered">
               <tr style="background:#2891DD; color:white">
                 <th class="col-lg-1" rowspan="2">NO.</th>
-                <th class="col-lg-1" rowspan="2">NAMA PENERIMA</th>
+                <th class="col-lg-1" style="width:13%" rowspan="2">NAMA PENERIMA</th>
                 <th class="col-lg-2" rowspan="2">URAIAN BELANJA</th>
                 <th class="col-lg-3" colspan="2">BUKTI</th>
                 <th class="col-lg-2" rowspan="2">JUMLAH</th>
