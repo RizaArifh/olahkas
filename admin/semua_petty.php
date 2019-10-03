@@ -6,7 +6,7 @@ $datacek = mysqli_query(
     "SELECT * FROM data_transaksi WHERE de='3' and keterangan='$last'"
 );
 $num = mysqli_num_rows($datacek);
-$idsk=$_GET['ids'];
+$idsk = $_GET['ids'];
 $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keterangan='$idsk'");
 $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY id DESC LIMIT '1';");
 
@@ -36,28 +36,10 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
 <body>
     <div class="container-fluid">
         <?php
-        include "../element/_nav.php";
+        include "../element/_nav.php"
+
         ?>
-        <h2>Pilih Petty Ke :</h2>
-        <div class="row">
-        <div class="col-lg-2">
-            <select name="no_petty" id="petty" class="form-control" onChange="updatedata(this.value)" required>
-                <option value="Pilih Pettyf">Pilih</option>
-                <?php
-                while ($no = mysqli_fetch_array($listpetty)) {
-                    if ($no['keterangan'] < 10) {
-                        ?>
-                        <option value="<?= $no['keterangan'] ?>">0<?= $no['keterangan']; ?> </option>
-                    <?php
-                        } else { ?>
-                        <option value="<?= $no['keterangan'] ?>"><?= $no['keterangan']; ?> </option>
-                <?php
-                    };
-                };
-                
-                ?>
-            </select>
-            </div></div>
+        <h2>PETTY KE : <?= $idsk ?></h2>
         <h2>Per : <?php if ($num == 0) {
                         echo 'Data Masih Kosong';
                     } else {
@@ -65,18 +47,38 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
                     } ?></h2>
         <?php $i = 1; ?>
         <div class="row">
-            <div class="col-12">
-                <div style="float:left">
-                    <a href="../back/clear_petty.php" class="btn btn-danger">Clear Kegiatan Petty</a>
-
-                    <a href="../export/laporan_petty.php" class="btn btn-success">Export Laporan Petty</a>
+            <div class="col-lg-12">
+                <div class="col-lg-6" style="margin-left:-2%">
+                    <div class="col-lg-5">
+                        <a href="../back/clear_petty_tertentu.php?ids=<?= $idsk ?>" class="btn btn-danger">Clear Kegiatan Petty Ke <?= $idsk ?></a>
                     </div>
-                <form action="../back/akhir_petty.php" method="post">
-                    <input type="text" name="sisa" id="sisapetty" value="" hidden>
-                    <input type="text" name="tgl_akhir" id="tgl_akhir" value="<?php echo date('Y-m-d'); ?>" hidden>
-                    <input type="text" name="sesi_petty" value="<?= $last ?>" hidden>
-                    <input style="float:right;" type="submit" value="Akhiri Petty Sekarang" id="akh" class="btn btn-warning">
-                </form>
+                    <div class="col-lg-4">
+                        <a href="../export/laporan_petty.php" class="btn btn-success">Export Laporan Petty</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div style="float:right;margin-right:-8.5%;">
+
+                        <div class="col-lg-12">
+                            <select name="no_petty" id="petty" class="form-control" onChange="updatedata(this.value)" required>
+                                <option>Lihat Petty Lain</option>
+                                <?php
+                                while ($no = mysqli_fetch_array($listpetty)) {
+                                    if ($no['keterangan'] < 10) {
+                                        ?>
+                                        <option value="<?= $no['keterangan'] ?>">0<?= $no['keterangan']; ?> </option>
+                                    <?php
+                                        } else { ?>
+                                        <option value="<?= $no['keterangan'] ?>"><?= $no['keterangan']; ?> </option>
+                                <?php
+                                    };
+                                };
+
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <br>
@@ -87,15 +89,15 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
                     <table class="table-hover table-bordered">
                         <tr style="background:#2891DD; color:white">
                             <th class="col-lg-1" rowspan="2">NO.</th>
-                            <th style="width:15%" rowspan="2">NAMA PENERIMA</th>
-                            <th class="col-lg-3" rowspan="2">URAIAN BELANJA</th>
+                            <th class="col-lg-1" rowspan="2">NAMA PENERIMA</th>
+                            <th class="col-lg-2" rowspan="2">URAIAN BELANJA</th>
                             <th class="col-lg-3" colspan="2">BUKTI</th>
-                            <th class="col-lg-1" rowspan="2">JUMLAH</th>
+                            <th class="col-lg-2" rowspan="2">JUMLAH</th>
                             <th class="col-lg-2" rowspan="2">DANA BERJALAN</th>
                             <th class="col-lg-1" rowspan="2">AKSI</th>
                         </tr>
                         <tr style="background:#2891DD; color:white">
-                            <th style="width:14%;">TANGGAL</th>
+                            <th style="width:10%;">TANGGAL</th>
                             <th class="col-lg-1">NO</th>
                         </tr>
                         </thead class="">
@@ -195,13 +197,11 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
         $(document).ready(function() {
             $('#sisapetty').val(<?= $sis ?>);
         });
-
-
     </script>
     <script>
-    function updatedata(ids){
-        window.location.href = "../admin/semua_petty.php?ids=" + ids;
-    }
+        function updatedata(ids) {
+            window.location.href = "../admin/semua_petty.php?ids=" + ids;
+        }
     </script>
 </body>
 

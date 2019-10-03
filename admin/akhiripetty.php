@@ -49,62 +49,65 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
     <div class="row">
       <div class="col-lg-12">
         <div class="col-lg-6" style="margin-left:-2%">
-      <div class="col-lg-4">
-        <a  href="../back/clear_petty.php" class="btn btn-danger">Clear Kegiatan Petty</a>
-      </div>
-      <div class="col-lg-4">
-        <a  href="../export/laporan_petty.php" class="btn btn-success">Export Laporan Petty</a>
-      </div>
-      </div>
-      <div class="col-lg-6">
-        <div style="float:right;margin-right:-8.5%;">
-      <form action="../back/akhir_petty.php" method="post">
-        <input type="text" name="sisa" id="sisapetty" value="" hidden>
-        <input type="text" name="tgl_akhir" id="tgl_akhir" value="<?php echo date('Y-m-d'); ?>" hidden>
-        <input type="text" name="sesi_petty" value="<?= $last ?>" hidden>
-        <div class="col-lg-4">
-        <input type="submit" value="Akhiri Petty Sekarang" id="akh" class="btn btn-warning">
+          <div class="col-lg-4">
+            <a href="../back/clear_petty.php" class="btn btn-danger">Clear Kegiatan Petty</a>
+          </div>
+          <div class="col-lg-4">
+            <a href="../export/laporan_petty.php" class="btn btn-success">Export Laporan Petty</a>
+          </div>
         </div>
-      </form>
-        </div>
-        <div style="float:right">
-      <div class="col-lg-12">
-        <select name="no_petty" id="petty" class="form-control" onChange="updatedata(this.value)" required>
-          <option>Lihat Petty Lain</option>
-          <?php
-          while ($no = mysqli_fetch_array($listpetty)) {
-            if ($no['keterangan'] < 10) {
-              ?>
-              <option value="<?= $no['keterangan'] ?>">0<?= $no['keterangan']; ?> </option>
-            <?php
-              } else { ?>
-              <option value="<?= $no['keterangan'] ?>"><?= $no['keterangan']; ?> </option>
-          <?php
-            };
-          };
+        <div class="col-lg-6">
+          <div style="float:right;margin-right:-8.5%;">
+            <form action="../back/akhir_petty.php" method="post">
+              <input type="text" name="sisa" id="sisapetty" value="" hidden>
+              <input type="text" name="tgl_akhir" id="tgl_akhir" value="<?php echo date('Y-m-d'); ?>" hidden>
+              <input type="text" name="sesi_petty" value="<?= $last ?>" hidden>
+              <div class="col-lg-4">
+                <input type="submit" value="Akhiri Petty Sekarang" id="akh" class="btn btn-warning">
+              </div>
+            </form>
+          </div>
+          <div style="float:right">
+            <div class="col-lg-12">
+              <select name="no_petty" id="petty" class="form-control" onChange="updatedata(this.value)" required>
+                <option>Lihat Petty Lain</option>
+                <?php
+                while ($no = mysqli_fetch_array($listpetty)) {
+                  if ($no['keterangan'] < 10) {
+                    ?>
+                    <option value="<?= $no['keterangan'] ?>">0<?= $no['keterangan']; ?> </option>
+                  <?php
+                    } else { ?>
+                    <option value="<?= $no['keterangan'] ?>"><?= $no['keterangan']; ?> </option>
+                <?php
+                  };
+                };
 
-          ?>
-        </select>
-      </div></div>
-    </div></div></div>
+                ?>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <br>
 
-    <div class="row justify-content-center" >
+    <div class="row justify-content-center">
       <div class="row" style="width:98%;">
         <div class="table_rekap_keg" style="width:100%;">
           <div class="card " style="border:0.2px solid white;border-radius:10px; overflow:hidden;font-size:17px;">
             <table class="table-hover table-bordered">
               <tr style="background:#2891DD; color:white">
                 <th class="col-lg-1" rowspan="2">NO.</th>
-                <th style="col-lg-2" rowspan="2">NAMA PENERIMA</th>
+                <th class="col-lg-1" rowspan="2">NAMA PENERIMA</th>
                 <th class="col-lg-2" rowspan="2">URAIAN BELANJA</th>
-                <th class="col-lg-2" colspan="2">BUKTI</th>
+                <th class="col-lg-3" colspan="2">BUKTI</th>
                 <th class="col-lg-2" rowspan="2">JUMLAH</th>
                 <th class="col-lg-2" rowspan="2">DANA BERJALAN</th>
                 <th class="col-lg-1" rowspan="2">AKSI</th>
               </tr>
               <tr style="background:#2891DD; color:white">
-                <th style="col-lg-2;">TANGGAL</th>
+                <th style="width:10%;">TANGGAL</th>
                 <th class="col-lg-1">NO</th>
               </tr>
               </thead class="">

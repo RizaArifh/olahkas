@@ -50,24 +50,24 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
                 <th class="col-lg-1">Saldo</th>
                 <th class="col-lg-2">Keterangan</th>
               </tr>
-</thead>
+            </thead>
           </table>
           <div class="tbod datas">
             <table class="table-fixed table">
-            <thead hidden>
-              <tr>
-                <th class="col-lg-1">No.</th>
-                <th class="col-lg-1">Aksi</th>
-                <th class="col-lg-1">Tanggal</th>
-                <th class="col-lg-1">Kode</th>
-                <th class="col-lg-2">Nama / Kegiatan / Keterangan</th>
-                <th class="col-lg-2">Sub Nama Kegiatan</th>
-                <th class="col-lg-1">Debet</th>
-                <th class="col-lg-1">Kredit</th>
-                <th class="col-lg-1">Saldo</th>
-                <th class="col-lg-2">Keterangan</th>
-              </tr>
-</thead>
+              <thead hidden>
+                <tr>
+                  <th class="col-lg-1">No.</th>
+                  <th class="col-lg-1">Aksi</th>
+                  <th class="col-lg-1">Tanggal</th>
+                  <th class="col-lg-1">Kode</th>
+                  <th class="col-lg-2">Nama / Kegiatan / Keterangan</th>
+                  <th class="col-lg-2">Sub Nama Kegiatan</th>
+                  <th class="col-lg-1">Debet</th>
+                  <th class="col-lg-1">Kredit</th>
+                  <th class="col-lg-1">Saldo</th>
+                  <th class="col-lg-2">Keterangan</th>
+                </tr>
+              </thead>
               <tbody>
                 <?php $i = 1;
                 $saldo = 0; ?>
@@ -101,7 +101,7 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
     </div>
   </div>
   <script>
- $('#ss').tableExport();
+    $('#ss').tableExport();
   </script>
   </div>
 </body>
