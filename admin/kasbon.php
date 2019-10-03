@@ -43,24 +43,24 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
     <?php
     include "../element/_nav.php"
     ?>
-    <div class="row">
-        <div class="col-md-4">
+    <div class="row" style="margin-left:0%;">
+        <div class="col-lg-">
             
             <h1>KREDIT</h1>
         <form action="../back/insert_kasbon_k.php" method="post" autocomplete="off">
         <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4">
         <label for="">Tanggal</label>
-        </div><div class="col-md-8">
+        </div><div class="col-lg-8">
         <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly><br>
         </div></div>
         <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <label for="">No / Nama </label>
             </div>
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 <div class="row">
-                <div class="col-md-4">
+                <div class="col-lg-4">
             <select name="no_kegiatan" class="form-control" id="no_orangk" onChange="GetNo_kegiatank(this.value)" required>
                 <option value="">Pilih</option>
                 <?php
@@ -80,21 +80,21 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 <?php };
                 print_r($data);
                 ?>
-            </select></div><div class="col-md-8">
+            </select></div><div class="col-lg-8">
             <input type="text" name="nama_orang" id="nama_orangk" class="form-control" readonly>
             </div>
             </div></div></div>
             <?php include "../back/get_jml_sisa.php";?><br>
             <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <label for="">Jml Dana Yang Tersedia</label>
-            </div><div class="col-md-8">
+            </div><div class="col-lg-8">
             <input type="text" name="dana_ada" id="jmlad" class="form-control" placeholder="-" value="<?=$tersisa?>"readonly><br>
             </div></div>
             <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <label for="">Jml Kas Bon Sekarang</label>
-            </div><div class="col-md-8">
+            </div><div class="col-lg-8">
             <input type="text" name="kasbon" id="jmlk" class="form-control" placeholder="Masukan Jumlah Kas Bon" onChange="cek(this.value)" required > <br>
             </div></div>
 <div style="float:right">
@@ -102,7 +102,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             </div>
         </form>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3">
         
         <?php $i = 1; ?>
         <h2>Tambah Orang</h2>
@@ -124,15 +124,15 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
             <!-- <a href="../back/clear_orang.php">clear orang</a> -->
             <!-- </div> --><br>
             <div class="row">
-            <div class="col-md-12">
+            <div class="col-lg-12">
             <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
                             <table class="table" >
                                 <thead>
                                     <tr>
-                                        <th class="col-3">NO.</th>
-                                        <th class="col-3">NAMA</th>
-                                        <th class="col-3">KASBON</th>
-                                        <th class="col-3">AKSI</th>
+                                        <th class="col-lg-3">NO.</th>
+                                        <th class="col-lg-3">NAMA</th>
+                                        <th class="col-lg-3">KASBON</th>
+                                        <th class="col-lg-3">AKSI</th>
                                     </tr>
                                 </thead class="">
                             </table>
@@ -143,15 +143,15 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 <?php foreach ($databon as $row) { ?>
                 <tr>
                     <?php if($i<10){?>
-                    <td class="col-3">0<?php echo $row["no_orang"]; ?></td>    
+                    <td class="col-lg-3">0<?php echo $row["no_orang"]; ?></td>    
                     <?php
                     }else{?>
-                    <td class="col-3"><?php echo $row["no_orang"]; ?></td>    
+                    <td class="col-lg-3"><?php echo $row["no_orang"]; ?></td>    
                         <?php
                     }
                     ?>
 
-                    <td class="col-3"><?php echo $row["nama_orang"]; ?></td>
+                    <td class="col-lg-3"><?php echo $row["nama_orang"]; ?></td>
                     <?php
                     $namak= $row["nama_orang"];
                     $sql2 = "SELECT * FROM data_transaksi WHERE subnama_kegiatan = '$namak'";
@@ -170,8 +170,8 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                       }
                     }
                     ?>
-                    <td class="col-3"><?=$kasbonn?></td>
-                    <td class="col-3"><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>"onclick="return confirm('Yakin Ingin Menghapus?')" id="$i">hapus</a></td>
+                    <td class="col-lg-3"><?=$kasbonn?></td>
+                    <td class="col-lg-3"><a href="../back/delete_orang.php?id=<?php echo $row['id']; ?>"onclick="return confirm('Yakin Ingin Menghapus?')" id="$i">hapus</a></td>
                 </tr>
                 <?php $i++; ?>
 
@@ -188,22 +188,22 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 </div>
             </div>
     
-<div class="col-md-5">
+<div class="col-lg-5">
 <h1>DEBET</h1>
             <form action="../back/insert_kasbon.php" method="post">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-lg-4">
                 <label for="tanggal">Tanggal </label>
-                </div><div class="col-md-8">
+                </div><div class="col-lg-8">
                 <input type="text" name="tanggal" class="form-control"value="<?php echo date('d-m-Y'); ?>"readonly><br>
                 </div></div>
                 <div class="row">
-                <div class="col-md-4">
+                <div class="col-lg-4">
                 <label for="No / Nama Kegiatan">No / Nama  </label>
                 </div>
-                <div class="col-md-8">
+                <div class="col-lg-8">
                     <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                 <select name="no_kegiatan" id="no_orang" class="form-control" onChange="GetNo_kegiatand(this.value)" required>
                     <option value="">Pilih</option>
                     <?php
@@ -223,31 +223,31 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
 
                     print_r($data);
                     ?>
-                </select></div><div class="col-md-8">
-                <input type="text" name="nama_orang" class="form-control" id="nama_orangd"readonly> <br>
+                </select></div><div class="col-lg-8">
+                <input type="text" nam  e="nama_orang" class="form-control" id="nama_orangd"readonly> <br>
                 </div></div></div></div>
                 <div class="row">
-                <div class="col-md-4">
+                <div class="col-lg-4">
                 <label for="">Jml Yang Harus Di Bayar </label>
-                </div><div class="col-md-8">
+                </div><div class="col-lg-8">
                 <input type="text" name="harus_bayar" id="harus_bayar" class="form-control" placeholder="-" value="0" readonly> <br>
                 </div></div>
                 <div class="row">
-                <div class="col-md-4">
+                <div class="col-lg-4">
                 <label for="">Jml Sudah Di Bayar </label>
-                </div><div class="col-md-8">
+                </div><div class="col-lg-8">
                 <input type="text" name="sudah_bayar" id="sudah_bayar" placeholder="-" class="form-control"readonly> <br>
                 </div></div>
                 <div class="row">
-                <div class="col-md-4">
+                <div class="col-lg-4">
                 <label for="">Jml DiBayar Sekarang </label>
                 </div>
-                <div class="col-md-8">
+                <div class="col-lg-8">
                     <div class="row">
-                <div class="col-md-9">
+                <div class="col-lg-9">
                 <div class="input-group mb-3">
                 <input type="text" name="dibayar" class="form-control"id="dibayar" onChange="updatekurang2(this.value)" placeholder="" required> <br>
-                </div></div><div class="col-md-3">
+                </div></div><div class="col-lg-3">
                 <div class="input-group-append">
                 <button class="btn btn-success" type="button" onclick="lunas()" id="button-lunas">Lunas</button>
                 </div>
@@ -255,9 +255,9 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
                 </div>
                 </div></div>
                 <div class="row">
-                <div class="col-md-4">
+                <div class="col-lg-4">
                 <label for="">Kurang Di Setor</label>
-                </div><div class="col-md-8">
+                </div><div class="col-lg-8">
                 <input type="text" name="kurang" id="kurang" class="form-control"placeholder="-"readonly> <br>
                 </div></div>
                 

@@ -22,7 +22,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
         include "../element/_nav.php";
         ?>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#debet"><h1>DEBET</h1></a></li>
@@ -33,21 +33,21 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                         <form action="../back/insert_rka.php" method="post" autocomplete="off">
                         <br>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="tanggal">Tanggal :</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly>
                                 </div>
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="No / Kegiatan">No / Kegiatan : </label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4">
                                             <select name="no_kegiatan" id="no_kegiatand" class="form-control" onChange="GetNo_kegiatand(this.value)" required>
                                                 <option value="">Pilih</option>
                                                 <?php
@@ -66,49 +66,49 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                                 print_r($data);
                                                 ?>
                                             </select></div>
-                                        <div class="col-md-8">
+                                        <div class="col-lg-8">
                                             <input class="form-control" type="text" name="nama_keg" id="nama_kegiatand" readonly> <br>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="">Jml Sesuai RKA :</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input type="text" name="anggaran_rka" class="form-control" id="jmlrka" placeholder="-"> <br>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="">Jml Sudah DiDebet :</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input type="text" name="sudah_debet" id="sudah_debet" class="form-control" placeholder="-" readonly> <br>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="">Jml DiDebet Sekarang :</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input type="text" name="didebet" id="didebet" class="form-control" onChange="updatekurang(this.value)" placeholder="" required> <br>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="">Kurang :</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input type="text" name="kurang" id="kurang" class="form-control" placeholder="-" readonly> <br>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="">Keterangan :</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input type="text" name="keterangan" class="form-control" placeholder=""> <br>
                                 </div>
                             </div>
@@ -120,21 +120,21 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                         <h2>Masukan Dana Kegiatan RKA</h2>
                         <form action="../back/insert_jumlah_tersedia.php" method="post" autocomplete="off" class="form-horizontal" autocomplete="off">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="tanggal" class="control-label">Tanggal</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input class="form-control" type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>"><br>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="No / Nama Kegiatan" class="control-label align-self-center">No / Kegiatan</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-lg-4">
                                             <select class="form-control" name="no_kegiatan" id="no_kegiatand2" onChange="GetNo_kegiatan2(this.value)" required>
                                                 <option value="">Pilih</option>
                                                 <?php
@@ -154,25 +154,25 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                                 print_r($data);
                                                 ?>
                                             </select></div>
-                                        <div class="col-md-8">
+                                        <div class="col-lg-8">
                                             <input style="" class="form-control" type="text" name="nama_keg" id="nama_kegiatan2" readonly><br>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="" class="control-label">Jumlah Dana</label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input class="form-control " type="text" name="jumlah_tersedia" onchange="cekangka(this.value)" required><br>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <label for="" class="control-label">Keterangan </label>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input class="form-control" type="text" name="keterangan" required><br>
                                 </div>
                             </div>
@@ -184,7 +184,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 </div>
 
             </div>
-            <div class="col-md-3">
+            <div class="col-lg-3">
             
                 <?php $i = 1; ?>
                 <h2>Tambah Kegiatan</h2>
@@ -205,15 +205,15 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 </form>
                 <br><br><br>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
 
                         <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
                             <table class="table" >
                                 <thead>
                                     <tr>
-                                        <th class="col-3">NO.</th>
-                                        <th class="col-6">NAMA KEGIATAN</th>
-                                        <th class="col-3">AKSI</th>
+                                        <th class="col-lg-3">NO.</th>
+                                        <th class="col-lg-6">NAMA KEGIATAN</th>
+                                        <th class="col-lg-3">AKSI</th>
                                     </tr>
                                 </thead class="">
                             </table>
@@ -224,12 +224,12 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                         foreach ($datakeg as $row) : ?>
                                             <tr>
                                                 <?php if ($row["no_keg"] < 10) { ?>
-                                                    <td class="col-2">0<?php echo $row["no_keg"]; ?></td>
+                                                    <td class="col-lg-2">0<?php echo $row["no_keg"]; ?></td>
                                                 <?php } else {?>
-                                                    <td class="col-2"><?php echo $row["no_keg"]; ?></td>
+                                                    <td class="col-lg-2"><?php echo $row["no_keg"]; ?></td>
                                                 <?php } ?>
-                                                <td class="col-7"><?php echo $row["nama_kegiatan"]; ?></td>
-                                                <td class="col-3">
+                                                <td class="col-lg-7"><?php echo $row["nama_kegiatan"]; ?></td>
+                                                <td class="col-lg-3">
                                                     <a style="text-decoration:none;" onclick="return confirm('Hapus Data?');" href="../back/delete_keg.php?id=<?php echo $row['id']; ?>">Hapus</a>
                                                 </td>
                                             </tr>
@@ -244,24 +244,24 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <h1>KREDIT</h1>
                 <form action="../back/insert_rka_k.php" method="post" autocomplete="off">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <label for="tanggal" class="control-label">Tanggal</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <input type="text" name="tanggal" class="form-control" value="<?php echo date('d-m-Y'); ?>" readonly><br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <label for="No / Nama Kegiatan">No / Kegiatan</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-lg-4">
                                     <select name="no_kegiatan" id="no_kegiatank" class="form-control" onChange="GetNo_kegiatank(this.value)" required>
                                         <option value="">Pilih</option>
                                         <?php
@@ -281,49 +281,49 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                         print_r($data);
                                         ?>
                                     </select></div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <input class="form-control" type="text" name="nama_keg" id="nama_kegiatank" readonly> <br>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <label for="">Sub Kegiatan</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <input type="text" name="sub_kegiatan" class="form-control" placeholder="" required> <br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <label for="">Dana Yang Ada</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <input type="text" name="dana_ada" id="jmlad" placeholder="-" class="form-control" readonly> <br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <label for="">Total Dana Keluar</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <input type="text" name="dana_sdh_keluar" id="jmlk" placeholder="-" readonly class="form-control"> <br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <label for="">Keluarkan </label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <input type="text" class="form-control" name="kredit" id="kredit" onChange="updatesaldo(this.value)" placeholder="" required> <br>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <label for="">Saldo</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-lg-8">
                             <input type="text" name="saldo" id="saldo" class="form-control" placeholder="-" readonly> <br>
                         </div>
                     </div>

@@ -48,7 +48,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
     <?php $i = 1; ?>
     <div class="row">
       <div class="col-lg-12">
-        <div class="col-lg-6" style="margin-left:-2%;">
+        <div class="col-lg-6" style="margin-left:-2%">
       <div class="col-lg-4">
         <a  href="../back/clear_petty.php" class="btn btn-danger">Clear Kegiatan Petty</a>
       </div>
@@ -57,7 +57,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
       </div>
       </div>
       <div class="col-lg-6">
-        <div style="float:right;margin-right:-8.5%">
+        <div style="float:right;margin-right:-8.5%;">
       <form action="../back/akhir_petty.php" method="post">
         <input type="text" name="sisa" id="sisapetty" value="" hidden>
         <input type="text" name="tgl_akhir" id="tgl_akhir" value="<?php echo date('Y-m-d'); ?>" hidden>
@@ -88,9 +88,9 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
       </div></div>
     </div></div></div>
     <br>
-    <!-- justify-content-center" style="width:100%; -->
-    <div class="row">
-      <div class="col-lg-12">
+
+    <div class="row justify-content-center" >
+      <div class="row" style="width:98%;">
         <div class="table_rekap_keg" style="width:100%;">
           <div class="card " style="border:0.2px solid white;border-radius:10px; overflow:hidden;font-size:17px;">
             <table class="table-hover table-bordered">
@@ -172,7 +172,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
               </tfoot>
 
             </table>
-          </div></div>
+          </div>
           <?php
           function rupiah($angka)
           {

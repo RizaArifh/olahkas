@@ -33,22 +33,22 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
     <!-- <div style="max-height:100px;overflow:hidden;overflow-y:auto">     -->
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-lg-12">
 
         <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
           <table class="table">
             <thead>
               <tr>
-                <th class="col-1">No.</th>
-                <th class="col-1">Aksi</th>
-                <th class="col-1">Tanggal</th>
-                <th class="col-1">Kode</th>
-                <th class="col-2">Nama / Kegiatan / Keterangan</th>
-                <th class="col-2">Sub Nama Kegiatan</th>
-                <th class="col-1">Debet</th>
-                <th class="col-1">Kredit</th>
-                <th class="col-1">Saldo</th>
-                <th class="col-2">Keterangan</th>
+                <th class="col-lg-1">No.</th>
+                <th class="col-lg-1">Aksi</th>
+                <th class="col-lg-1">Tanggal</th>
+                <th class="col-lg-1">Kode</th>
+                <th class="col-lg-2">Nama / Kegiatan / Keterangan</th>
+                <th class="col-lg-2">Sub Nama Kegiatan</th>
+                <th class="col-lg-1">Debet</th>
+                <th class="col-lg-1">Kredit</th>
+                <th class="col-lg-1">Saldo</th>
+                <th class="col-lg-2">Keterangan</th>
               </tr>
 </thead>
           </table>
@@ -56,16 +56,16 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
             <table class="table-fixed table">
             <thead hidden>
               <tr>
-                <th class="col-1">No.</th>
-                <th class="col-1">Aksi</th>
-                <th class="col-1">Tanggal</th>
-                <th class="col-1">Kode</th>
-                <th class="col-2">Nama / Kegiatan / Keterangan</th>
-                <th class="col-2">Sub Nama Kegiatan</th>
-                <th class="col-1">Debet</th>
-                <th class="col-1">Kredit</th>
-                <th class="col-1">Saldo</th>
-                <th class="col-2">Keterangan</th>
+                <th class="col-lg-1">No.</th>
+                <th class="col-lg-1">Aksi</th>
+                <th class="col-lg-1">Tanggal</th>
+                <th class="col-lg-1">Kode</th>
+                <th class="col-lg-2">Nama / Kegiatan / Keterangan</th>
+                <th class="col-lg-2">Sub Nama Kegiatan</th>
+                <th class="col-lg-1">Debet</th>
+                <th class="col-lg-1">Kredit</th>
+                <th class="col-lg-1">Saldo</th>
+                <th class="col-lg-2">Keterangan</th>
               </tr>
 </thead>
               <tbody>
@@ -73,21 +73,21 @@ $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('
                 $saldo = 0; ?>
                 <?php foreach ($datatotal as $row) : ?>
                   <tr>
-                    <td class="col-1"><?php echo $i; ?></td>
-                    <td class="col-1">
+                    <td class="col-lg-1"><?php echo $i; ?></td>
+                    <td class="col-lg-1">
                       <a id="a" href="../back/hapus.php?id=<?php echo $row["id"]; ?>" onclick="return confirm ('yakin tak?');">hapus</a>
                     </td>
-                    <td class="col-1"><?php echo DateTime::createFromFormat('Y-m-d', $row['tanggal'])->format('d-m-Y'); ?></td>
-                    <td class="col-1"><?php echo $row["ko"]; ?>.0<?php echo $row["de"]; ?></td>
-                    <td class="col-2"><?php echo $row["nama_kegiatan_keterangan"]; ?></td>
-                    <td class="col-2"><?php echo $row["subnama_kegiatan"]; ?></td>
-                    <td class="col-1"><?php echo $row["debet"]; ?></td>
-                    <td class="col-1"><?php echo $row["kredit"]; ?></td>
+                    <td class="col-lg-1"><?php echo DateTime::createFromFormat('Y-m-d', $row['tanggal'])->format('d-m-Y'); ?></td>
+                    <td class="col-lg-1"><?php echo $row["ko"]; ?>.0<?php echo $row["de"]; ?></td>
+                    <td class="col-lg-2"><?php echo $row["nama_kegiatan_keterangan"]; ?></td>
+                    <td class="col-lg-2"><?php echo $row["subnama_kegiatan"]; ?></td>
+                    <td class="col-lg-1"><?php echo $row["debet"]; ?></td>
+                    <td class="col-lg-1"><?php echo $row["kredit"]; ?></td>
                     <?php
                       $saldo = $saldo + $row['debet'] - $row['kredit'];
                       ?>
-                    <td class="col-1"><?php echo $saldo; ?></td>
-                    <td class="col-1"><?php echo $row["keterangan"]; ?></td>
+                    <td class="col-lg-1"><?php echo $saldo; ?></td>
+                    <td class="col-lg-1"><?php echo $row["keterangan"]; ?></td>
 
                   </tr>
                   <?php $i++; ?>
