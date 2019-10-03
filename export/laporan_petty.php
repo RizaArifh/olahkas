@@ -50,12 +50,11 @@ if($last==0){
  $ab=DateTime::createFromFormat('Y-m-d', $st)->format('d/M/Y');
  header("Content-Disposition: attachment;filename=\"Petty_Cash_per_$ab.xls\"");
 }
-	
-    
     header("Cache-Control: max-age=0");
 	?>
- <h3>SURAT PERNYATAAN TANGGUNG JAWAB BELANJA (SPTB)</h3>
+ <h3>SURAT PERNYATAAN TANGGUNG JAWAB BELANJA (SPTB) <br>Nomor :</h3> 
  <pre class="ket">
+
  Yang bertanda tangan di bawah ini:
  Nama   : Waskito, S.Pd.
  Jabatan: Kepala Sekolah

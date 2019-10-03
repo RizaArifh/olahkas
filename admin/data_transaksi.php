@@ -1,6 +1,7 @@
 <?php
 
 include "../back/conn.php";
+$datatotal = mysqli_query($con, "SElECT * FROM data_transaksi order by id");
 $datatotal = mysqli_query($con, "SElECT * FROM data_transaksi where de not in ('4') order by id");
 
 ?>

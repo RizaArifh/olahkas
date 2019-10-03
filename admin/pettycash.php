@@ -51,7 +51,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                         </div>
                     </div>
                     <div style="float:right">
-                        <input type="submit" class="btn btn-primary" value="Masukan">
+                        <input type="submit" class="btn btn-primary" value="Masukan" id="akh">
                     </div>
                 </form>
                 <a style="float:left;" href="../back/clear_dana_petty.php" class="btn btn-danger">Clear Dana Petty</a>
@@ -69,10 +69,10 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="col-1">NO.</th>
-                                <th class="col-4">NAMA KEGIATAN</th>
-                                <th class="col-3">DANA</th>
-                                <th class="col-3">AKSI</th>
+                                <th class="col-lg-1">NO.</th>
+                                <th class="col-lg-4">NAMA KEGIATAN</th>
+                                <th class="col-lg-3">DANA</th>
+                                <th class="col-lg-3">AKSI</th>
                             </tr>
                         </thead class="">
                     </table>
@@ -217,6 +217,22 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
             };
             
         </script>
+        <?php
+if($tersisa!=0){
+  ?>
+<script>
+document.getElementById("akh").disabled = true;
+</script>
+<?php
+
+}else{
+  ?>
+  <script>
+  document.getElementById("akh").disabled = false;
+  </script>
+  <?php
+}
+?>
 </body>
 
 </html>

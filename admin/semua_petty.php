@@ -38,7 +38,9 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
         <?php
         include "../element/_nav.php";
         ?>
-        <h2>Pilih Petty Ke :<div class="col-3">
+        <h2>Pilih Petty Ke :</h2>
+        <div class="row">
+        <div class="col-lg-2">
             <select name="no_petty" id="petty" class="form-control" onChange="updatedata(this.value)" required>
                 <option value="Pilih Pettyf">Pilih</option>
                 <?php
@@ -55,7 +57,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
                 
                 ?>
             </select>
-        </h2>
+            </div></div>
         <h2>Per : <?php if ($num == 0) {
                         echo 'Data Masih Kosong';
                     } else {
@@ -68,7 +70,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
                     <a href="../back/clear_petty.php" class="btn btn-danger">Clear Kegiatan Petty</a>
 
                     <a href="../export/laporan_petty.php" class="btn btn-success">Export Laporan Petty</a>
-                    <a href="../admin/semua_petty.php" class="btn btn-success">Lihat Petty Lain</a></div>
+                    </div>
                 <form action="../back/akhir_petty.php" method="post">
                     <input type="text" name="sisa" id="sisapetty" value="" hidden>
                     <input type="text" name="tgl_akhir" id="tgl_akhir" value="<?php echo date('Y-m-d'); ?>" hidden>
@@ -80,21 +82,21 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
         <br>
         <div class="row justify-content-center">
 
-            <div class="table_rekap_keg" style="width:95%;">
+            <div class="table_rekap_keg" style="width:98%;">
                 <div class="card " style="border:0.2px solid white;border-radius:10px; overflow:hidden;font-size:17px;">
                     <table class="table-hover table-bordered">
                         <tr style="background:#2891DD; color:white">
-                            <th class="col-1" rowspan="2">NO.</th>
+                            <th class="col-lg-1" rowspan="2">NO.</th>
                             <th style="width:15%" rowspan="2">NAMA PENERIMA</th>
-                            <th class="col-3" rowspan="2">URAIAN BELANJA</th>
-                            <th class="col-3" colspan="2">BUKTI</th>
-                            <th class="col-1" rowspan="2">JUMLAH</th>
-                            <th class="col-2" rowspan="2">DANA BERJALAN</th>
-                            <th class="col-1" rowspan="2">AKSI</th>
+                            <th class="col-lg-3" rowspan="2">URAIAN BELANJA</th>
+                            <th class="col-lg-3" colspan="2">BUKTI</th>
+                            <th class="col-lg-1" rowspan="2">JUMLAH</th>
+                            <th class="col-lg-2" rowspan="2">DANA BERJALAN</th>
+                            <th class="col-lg-1" rowspan="2">AKSI</th>
                         </tr>
                         <tr style="background:#2891DD; color:white">
                             <th style="width:14%;">TANGGAL</th>
-                            <th class="col-1">NO</th>
+                            <th class="col-lg-1">NO</th>
                         </tr>
                         </thead class="">
                         <tbody>
@@ -107,36 +109,36 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
                                 foreach ($datap as $row) { ?>
                                     <tr>
                                         <?php if ($i < 10) { ?>
-                                            <td class="col-1">0<?php echo $i; ?></td>
+                                            <td class="col-lg-1">0<?php echo $i; ?></td>
                                         <?php
                                                 } else { ?>
-                                            <td class="col-1"><?php echo $i; ?></td>
+                                            <td class="col-lg-1"><?php echo $i; ?></td>
                                         <?php
                                                 }
                                                 ?>
-                                        <td class="col-1"><?php echo $row["subnama_kegiatan"]; ?></td>
-                                        <td class="col-1"><?php echo $row["nama_kegiatan_keterangan"]; ?></td>
-                                        <td class="col-1"><?php echo DateTime::createFromFormat('Y-m-d', $row['tanggal'])->format('d-M-Y'); ?></td>
-                                        <td class="col-1"><?php echo $i ?></td>
-                                        <td class="col-2"><?php echo rupiah($row["kredit"]); ?></td>
+                                        <td class="col-lg-1"><?php echo $row["subnama_kegiatan"]; ?></td>
+                                        <td class="col-lg-1"><?php echo $row["nama_kegiatan_keterangan"]; ?></td>
+                                        <td class="col-lg-1"><?php echo DateTime::createFromFormat('Y-m-d', $row['tanggal'])->format('d-M-Y'); ?></td>
+                                        <td class="col-lg-1"><?php echo $i ?></td>
+                                        <td class="col-lg-2"><?php echo rupiah($row["kredit"]); ?></td>
                                         <?php $sis = $sis - $row["kredit"]; ?>
                                         <?php $tot = $tot + $row["kredit"]; ?>
-                                        <td class="col-2"><?php echo rupiah($sis) ?></td>
-                                        <td class="col-1"><a href="../back/delete_kegiatan_petty_lap.php?id=<?php echo $row['id']; ?>">hapus</a></td>
+                                        <td class="col-lg-2"><?php echo rupiah($sis) ?></td>
+                                        <td class="col-lg-1"><a href="../back/delete_kegiatan_petty_lap.php?id=<?php echo $row['id']; ?>">hapus</a></td>
                                     </tr>
                                     <?php $i++; ?>
 
                                 <?php };
                                 } else { ?>
                                 <tr>
-                                    <td class="col-1">Data kosong</td>
-                                    <td style="col-1">Data kosong</td>
-                                    <td class="col-1">Data kosong</td>
-                                    <td class="col-1">Data kosong</td>
-                                    <td class="col-1">Data kosong</td>
-                                    <td class="col-2">Data kosong</td>
-                                    <td class="col-2">Data kosong</td>
-                                    <td class="col-1"></a>Data kosong</td>
+                                    <td class="col-lg-1">Data kosong</td>
+                                    <td style="col-lg-1">Data kosong</td>
+                                    <td class="col-lg-1">Data kosong</td>
+                                    <td class="col-lg-1">Data kosong</td>
+                                    <td class="col-lg-1">Data kosong</td>
+                                    <td class="col-lg-2">Data kosong</td>
+                                    <td class="col-lg-2">Data kosong</td>
+                                    <td class="col-lg-1"></a>Data kosong</td>
                                 </tr>
                             <?php
                             } ?>
