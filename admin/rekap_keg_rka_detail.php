@@ -65,7 +65,7 @@ if (isset($_GET['jangka'])) {
         <div class="row">
             <div class="col-lg-12">
             <a href="rekap_keg_rka.php" class="btn btn-warning">Back</a>
-                <a class="btn btn-danger" href="../back/clear_data_keg.php">Clear Data</a>
+                <a class="btn btn-danger" href="../back/clear_data_keg_tertentu.php?nama=<?=$nama?>">Clear Data</a>
 
             </div>
             <div class="col-lg-3">

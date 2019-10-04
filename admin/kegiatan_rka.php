@@ -207,7 +207,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                 <div class="row">
                     <div class="col-lg-12">
 
-                        <div style="border:0.2px solid grey;border-radius:10px; overflow:hidden;">
+                        <div style="border:0.5px solid grey;border-radius:10px; overflow:hidden;">
                             <table class="table" >
                                 <thead>
                                     <tr>
@@ -540,7 +540,19 @@ if(isset($_GET["hasil"])){
      } else {
          echo "Data berhasil diinput";
      }
- }?>
+ }
+ if(isset($_GET["hapus"])){
+    if($_GET["hapus"] == "berhasil"){?><script>
+       
+       Swal.fire({
+           type: 'success',
+           title: 'Oops...',
+           html: 'Kegiatan Telah Terhapus',
+       }) </script>
+       <?php
+    }
+}?>
+ 
  
 </body>
 
