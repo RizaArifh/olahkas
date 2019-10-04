@@ -120,7 +120,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                             <label for="tanggal">Tanggal :</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="date" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" style="padding:0px 12px;"><br>
+                            <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" style="padding:0px 12px;"><br>
                         </div>
                     </div>
                     <div class="row">
