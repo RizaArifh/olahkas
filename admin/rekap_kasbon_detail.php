@@ -94,14 +94,14 @@ if (isset($_GET['jangka'])) {
                     <div class="card " style="border:0.5px solid grey;border-radius:10px; overflow:hidden;font-size:17px;">
                         <table class="table-hover table-bordered">
                             <tr style="background:#2891DD; color:white">
-                        <th>No</th>
-                        <th>Tanggal</th>
-                        <th>Nama</th>
-                        <th>Keterangan</th>
-                        <th>Pinjam</th>
-                        <th>Kembali</th>
-                        <th>Kas Bon</th>
-                        <th>Saldo Berjalan</th>
+                        <th class="col-lg-1" style="width:5%;">No</th>
+                        <th class="col-lg-1">Tanggal</th>
+                        <th class="col-lg-2">Nama</th>
+                        <th class="col-lg-2">Keterangan</th>
+                        <th class="col-lg-2">Pinjam</th>
+                        <th class="col-lg-2">Kembali</th>
+                        <th class="col-lg-2">Kas Bon</th>
+                        <th class="col-lg-2">Saldo Berjalan</th>
                     </tr>
                     <tbody>
                         <?php
