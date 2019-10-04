@@ -2,12 +2,14 @@
 
 include "../back/conn.php";
 $nama = $_GET['nama'];
-$sttgl = '';
+// $sttgl = '';
+$sttgl = date('d-M-Y');
 if (isset($_GET['jangka'])) {
     $tgl = $_GET['jangka'];
 
 
     if ($tgl == 0) {
+        $sttgl = date('Y-m-d');
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
         $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 and subnama_kegiatan='$nama'");
@@ -16,6 +18,8 @@ if (isset($_GET['jangka'])) {
             $sttgl = $row['tanggal'];
         }
     } else {
+        $sttgl = date('d-M-Y');
+        
         // date_default_timezone_get();
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . " -$tgl day"));
@@ -27,6 +31,7 @@ if (isset($_GET['jangka'])) {
         }
     }
 } else {
+    $sttgl = date('d-M-Y');
     $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
     $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 and subnama_kegiatan='$nama'");
@@ -67,7 +72,7 @@ if (isset($_GET['jangka'])) {
         <div class="row">
             <div class="col-lg-12">
             <a href="rekap_kasbon.php" class="btn btn-warning">Back</a>
-            <a class="btn btn-danger" href="../back/clear_data_kasbon_orang.php?nama=<?= $nama_get ?>">Clear Data</a>
+            <a class="btn btn-danger" href="../back/clear_data_kasbon_orang.php?nama=<?= $nama ?>">Clear Data</a>
 
             </div>
             <div class="col-lg-3">

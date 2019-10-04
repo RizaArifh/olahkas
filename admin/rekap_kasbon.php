@@ -1,13 +1,14 @@
 <?php
 
 include "../back/conn.php";
-
-$sttgl = '';
+// $sttgl = '';
+$sttgl = date('d-M-Y');
 if (isset($_GET['jangka'])) {
     $tgl = $_GET['jangka'];
 
 
     if ($tgl == 0) {
+        $sttgl = date('Y-m-d');
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
         $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 group by subnama_kegiatan order by id");
@@ -16,6 +17,7 @@ if (isset($_GET['jangka'])) {
             $sttgl = $row['tanggal'];
         }
     } else {
+        $sttgl = date('Y-m-d');
         // date_default_timezone_get();
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . " -$tgl day"));
@@ -27,6 +29,7 @@ if (isset($_GET['jangka'])) {
         }
     }
 } else {
+    $sttgl = date('Y-m-d');
     $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
     $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 group by subnama_kegiatan order by id");

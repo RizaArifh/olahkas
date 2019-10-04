@@ -2,34 +2,36 @@
 
 include "../back/conn.php";
 $nama = $_GET['nama'];
-$sttgl = '';
+
 if (isset($_GET['jangka'])) {
     $tgl = $_GET['jangka'];
 
 
     if ($tgl == 0) {
+        $sttgl = date('d-M-Y');
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
-        $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and subnama_kegiatan='$nama'");
+        $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and subnama_kegiatan='$nama' and tanggal between '$x' and '$tanggal_now' or nama_kegiatan_keterangan='$nama'");
         $sttanggal = mysqli_query($con, "select * from data_transaksi where de=1 and subnama_kegiatan='$nama'order by tanggal asc LIMIT 1");
         while ($row = mysqli_fetch_array($sttanggal)) {
             $sttgl = $row['tanggal'];
         }
     } else {
-        // date_default_timezone_get();
+        $sttgl = date('d-M-Y');
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . " -$tgl day"));
         // $x = date("Y-m-d", strtotime("-$tgl days", $tanggal_now));
-        $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and subnama_kegiatan='$nama'and tanggal between '$x' and '$tanggal_now'");
+        $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and subnama_kegiatan='$nama' and tanggal between '$x' and '$tanggal_now' or nama_kegiatan_keterangan='$nama'");
         $sttanggal = mysqli_query($con, "select * from data_transaksi where de=1 and tanggal between '$x' and '$tanggal_now' order by tanggal asc LIMIT 1");
         while ($row = mysqli_fetch_array($sttanggal)) {
             $sttgl = $row['tanggal'];
         }
     }
 } else {
+    $sttgl = date('d-M-Y');
     $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
-    $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and subnama_kegiatan='$nama' ");
+    $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and subnama_kegiatan='$nama' and tanggal between '$x' and '$tanggal_now' or nama_kegiatan_keterangan='$nama'");
     $sttanggal = mysqli_query($con, "select * from data_transaksi where de=1 order by tanggal asc LIMIT 1");
     while ($row = mysqli_fetch_array($sttanggal)) {
         $sttgl = $row['tanggal'];
