@@ -11,7 +11,7 @@ if (isset($_GET['jangka'])) {
         $sttgl = date('Y-m-d');
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
-        $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and ko='D' group by subnama_kegiatan order by id");
+        $datatotal = mysqli_query($con, "select * from data_transaksi where de=1");
         $sttanggal = mysqli_query($con, "select * from data_transaksi where de=1 order by tanggal asc LIMIT 1");
         while ($row = mysqli_fetch_array($sttanggal)) {
             $sttgl = $row['tanggal'];
@@ -22,7 +22,7 @@ if (isset($_GET['jangka'])) {
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . " -$tgl day"));
         // $x = date("Y-m-d", strtotime("-$tgl days", $tanggal_now));
-        $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and ko='D' and tanggal between '$x' and '$tanggal_now' group by subnama_kegiatan order by id");
+        $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and tanggal between '$x' and '$tanggal_now'");
         $sttanggal = mysqli_query($con, "select * from data_transaksi where de=1 and tanggal between '$x' and '$tanggal_now' order by tanggal asc LIMIT 1");
         while ($row = mysqli_fetch_array($sttanggal)) {
             $sttgl = $row['tanggal'];
@@ -32,7 +32,7 @@ if (isset($_GET['jangka'])) {
     $sttgl = date('Y-m-d');
     $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
-    $datatotal = mysqli_query($con, "select * from data_transaksi where de=1 and ko='D' group by subnama_kegiatan order by id");
+    $datatotal = mysqli_query($con, "select * from data_transaksi where de=1");
     $sttanggal = mysqli_query($con, "select * from data_transaksi where de=1 order by tanggal asc LIMIT 1");
     while ($row = mysqli_fetch_array($sttanggal)) {
         $sttgl = $row['tanggal'];
@@ -68,7 +68,7 @@ if (isset($_GET['jangka'])) {
         <div class="row">
             <div class="col-lg-12">
                 <a class="btn btn-danger" href="../back/clear_data_keg.php" onclick="return confirm('Hapus Semua Data Kegiatan RKA?');">Clear Data</a>
-
+                <a href="../admin/rekap_keg_rka.php" class="btn btn-success" >Kembali Spesifik</a>
             </div>
             <br><br>
             <div class="col-lg-3">
@@ -108,27 +108,12 @@ if (isset($_GET['jangka'])) {
                                 <?php foreach ($datatotal as $row) : ?>
                                     <tr>
                                         <td ><?php echo $row["subnama_kegiatan"]; ?></td>
-
+                                        <td ><?php echo $row["debet"]; ?></td>
+                                        <td ><?php echo $row["kredit"]; ?></td>
                                         <?php
-                                            $kred = 0;
-                                            $debt = 0;
-                                            $p = 1;
                                             $sub = $row["subnama_kegiatan"];
-                                            $data_kegiatan = mysqli_query($con, "SElECT * FROM data_transaksi where subnama_kegiatan='$sub' and de=1 and tanggal between '$x' and '$tanggal_now'");
-                                            $data_kegiatank = mysqli_query($con, "SElECT * FROM data_transaksi where nama_kegiatan_keterangan='$sub' and de=1 and tanggal between '$x' and '$tanggal_now'");
-                                            while ($row2 = mysqli_fetch_array($data_kegiatan)) {    
-                                                $p++;
-                                                $debt = $debt + $row2['debet'];
-                                            }
-                                            while ($row2 = mysqli_fetch_array($data_kegiatank)) {
-                                                $kred = $kred + $row2['kredit'];
-                                        
-                                            }
-
-                                            $saldo = $debt - $kred;
+                                            $saldo = $row["debet"]; - $row["debet"];;
                                             ?>
-                                        <td><?php echo rupiah($debt); ?></td>
-                                        <td><?php echo rupiah($kred); ?></td>
                                         <td><?php echo rupiah($saldo); ?></td>
                                         <?php
                                             $saldo_berjalan = $saldo_berjalan + $saldo;

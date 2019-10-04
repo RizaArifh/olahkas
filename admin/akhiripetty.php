@@ -63,7 +63,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
               <input type="text" name="tgl_akhir" id="tgl_akhir" value="<?php echo date('Y-m-d'); ?>" hidden>
               <input type="text" name="sesi_petty" value="<?= $last ?>" hidden>
               <div class="col-lg-4">
-                <input type="submit" value="Akhiri Petty Sekarang" id="akh" class="btn btn-warning">
+                <input type="submit" value="Akhiri Petty Sekarang" id="akh" onclick="return confirm('Akhiri Petty Sekarang?');" class="btn btn-warning">
               </div>
             </form>
           </div>

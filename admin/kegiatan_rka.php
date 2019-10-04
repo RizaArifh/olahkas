@@ -37,7 +37,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <label for="tanggal">Tanggal :</label>
                                 </div>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly>
+                                    <input type="date" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>">
                                 </div>
                             </div>
                             <br>

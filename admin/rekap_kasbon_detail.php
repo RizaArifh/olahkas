@@ -95,7 +95,7 @@ if (isset($_GET['jangka'])) {
 <div class="col-lg-12">
         <div class="row justify-content-center">
 
-            <div class="row" style="width:98%;">
+            <div class="row" style="width:100%;">
                 <div class="table_rekap_keg" style="width:100%;">
                     <div class="card " style="border:0.5px solid grey;border-radius:10px; overflow:hidden;font-size:17px;">
                         <table class="table-hover table-bordered">

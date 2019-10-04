@@ -14,7 +14,11 @@ if($_SESSION['status']=='login'){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <?php include "element/boots.php" ?>
+    <link rel="stylesheet" href="src/css/my.css">
+    
+    <link rel="stylesheet" href="src/css/outs.css">
+    <link rel="stylesheet" href="src/css/outs2.css">
+    <link rel="stylesheet" href="src/css/outs3.css">
     <style>
         input { 
 	width: 100%; 
@@ -37,7 +41,7 @@ if($_SESSION['status']=='login'){
 }
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
     body{
-        height: 70vh;
+        height: 92vh;
         background: #092756;
 	background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
 	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
@@ -51,8 +55,7 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
         margin-right: 30%;
         text-align: center;
         /* width:50vw; */
-        margin-top: 30vh;
-        margin-bottom: 30vh;
+        margin-top:3%;
         /* background: white; */
     }
     h1{
@@ -61,18 +64,21 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
     
     </style>
     <script type="text/javascript" src="src/sweetalert/sweetalert2.all.js"></script>
+    
 </head>
 <body>
 
 <div class="login">
     <div class="b">
-        <h1>Sistem Informasi Olahkas SD 
-            </h1>
-            
+        <!-- <div class="row"> -->
+            <img src="src/img/logosd.png" alt="gambar sedang loading">
+        <h1>SISTEM INFORMASI OLAHKAS</h1>
+        <h1>SDIT NUR HIDAYYAH</h1>
+        <!-- </div> -->
     <form action="back/proses_login.php" method="post">
     	<input type="text" name="username" placeholder="Username" required="required" />
         <input type="password" name="password" placeholder="Password" required="required" />
-        <button type="submit" class="btn btn-primary btn-block btn-large">Masuk.</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Masuk</button>
     </form>
 </div></div>
 
