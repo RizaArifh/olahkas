@@ -37,7 +37,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                     <label for="tanggal">Tanggal :</label>
                                 </div>
                                 <div class="col-lg-8">
-                                    <input type="date" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>">
+                                    <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly>
                                 </div>
                             </div>
                             <br>
@@ -230,7 +230,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                                                 <?php } ?>
                                                 <td class="col-lg-7"><?php echo $row["nama_kegiatan"]; ?></td>
                                                 <td class="col-lg-3">
-                                                    <a style="text-decoration:none;" onclick="return confirm('Hapus Data?');" href="../back/delete_keg.php?id=<?php echo $row['id']; ?>">Hapus</a>
+                                                    <a style="text-decoration:none;" onclick="return confirm('Hapus Data Kegiatan?');" href="../back/delete_keg.php?id=<?php echo $row['id']; ?>">Hapus</a>
                                                 </td>
                                             </tr>
                                             <?php $i++;
@@ -252,7 +252,7 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
                             <label for="tanggal" class="control-label">Tanggal</label>
                         </div>
                         <div class="col-lg-8">
-                            <input type="date" name="tanggal" class="form-control" value="<?php echo date('d-m-Y'); ?>"><br>
+                            <input type="text" name="tanggal" class="form-control" value="<?php echo date('d-m-Y'); ?>" readonly><br>
                         </div>
                     </div>
                     <div class="row">

@@ -72,9 +72,10 @@ if (isset($_GET['jangka'])) {
         <div class="row">
             <div class="col-lg-12">
             <a href="rekap_kasbon.php" class="btn btn-warning">Back</a>
-            <a class="btn btn-danger" href="../back/clear_data_kasbon_orang.php?nama=<?= $nama ?>">Clear Data</a>
+            <a class="btn btn-danger" href="../back/clear_data_kasbon_orang.php?nama=<?= $nama ?>" onclick="return confirm('Hapus Semua Kasbon <?=$nama?>?');">Clear Data</a>
 
             </div>
+            <br>
             <div class="col-lg-3">
                 <form method="get">
                     <select name="jangka" id="jangkawkt" onchange="gantitanggal(this.value)" class="form-control">

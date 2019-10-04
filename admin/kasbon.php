@@ -52,7 +52,7 @@ $databon2 = mysqli_query($con, "SELECT * FROM orang_kasbon");
         <div class="col-lg-4">
         <label for="">Tanggal</label>
         </div><div class="col-lg-8">
-        <input type="date" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>"><br>
+        <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly><br>
         </div></div>
         <div class="row">
         <div class="col-lg-4">

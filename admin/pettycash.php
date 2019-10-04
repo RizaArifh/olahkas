@@ -31,7 +31,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                             <label for="tanggal" class="control-label">Tanggal</label>
                         </div>
                         <div class="col-md-7">
-                            <input class="form-control" type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>"><br>
+                            <input class="form-control" type="text" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly><br>
                         </div>
                     </div>
                     <div class="row">
@@ -54,13 +54,13 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                         <input type="submit" class="btn btn-primary" value="Masukan" id="akh">
                     </div>
                 </form>
-                <a style="float:left;" href="../back/clear_dana_petty.php" class="btn btn-danger">Clear Dana Petty</a>
+                <a style="float:left;" href="../back/clear_dana_petty.php" class="btn btn-danger" onclick="return confirm('Hapus Dana Semua Petty?');">Clear Dana Petty</a>
             </div>
             <div class="col-md-4">
                 <!-- <button id="export" onclick="export()"></button> -->
 
                 <?php $i = 1; ?>
-                <a href="../back/clear_petty.php" class="btn btn-danger">Clear Petty</a>
+                <a href="../back/clear_petty.php" class="btn btn-danger" onclick="return confirm('Hapus Semua Petty Sesi ini?');">Clear Petty</a>
                 <a href="../admin/akhiripetty.php" class="btn btn-warning">Lihat Laporan Petty</a>
                 <br><br>
 
@@ -93,7 +93,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                                                 ?>
                                             <td class="col-lg-4"><?php echo $row["nama_kegiatan_keterangan"]; ?></td>
                                             <td class="col-lg-3"><?php echo $row["kredit"]; ?></td>
-                                            <td class="col-lg-3"><a href="../back/delete_kegiatan_petty.php?id=<?php echo $row['id']; ?>">hapus</a></td>
+                                            <td class="col-lg-3"><a href="../back/delete_kegiatan_petty.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Hapus Kegiatan Petty ini?');">hapus</a></td>
                                         </tr>
                                         <?php $i++; ?>
 
@@ -107,7 +107,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                     </div>
 
                 </div><br>
-                <a href="../back/clear_petty_total.php" class="btn btn-danger">Clear Petty Total</a>
+                <!-- <a href="../back/clear_petty_total.php" class="btn btn-danger">Clear Petty Total</a> -->
             </div>
 
 
@@ -120,7 +120,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                             <label for="tanggal">Tanggal :</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" style="padding:0px 12px;"><br>
+                            <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" style="padding:0px 12px;" readonly<br>
                         </div>
                     </div>
                     <div class="row">

@@ -31,7 +31,7 @@ td{
 
     include "../element/_nav.php"
     ?>
-    <a class="btn btn-danger" href="../back/clear_data.php">Clear Data</a><br><br>
+    <a class="btn btn-danger" href="../back/clear_data.php" onclick="return confirm('Hapus Semua Data Transaksi?');">Clear Data</a><br><br>
     <!-- <div style="max-height:100px;overflow:hidden;overflow-y:auto">     -->
 
     <div class="row">

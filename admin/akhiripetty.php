@@ -50,7 +50,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
       <div class="col-lg-12">
         <div class="col-lg-6" style="margin-left:-2%">
           <div class="col-lg-4">
-            <a href="../back/clear_petty.php" class="btn btn-danger">Clear Kegiatan Petty</a>
+            <a href="../back/clear_petty.php" class="btn btn-danger" onclick="return confirm('Hapus Semua Petty Sesi ini?');">Clear Kegiatan Petty</a>
           </div>
           <div class="col-lg-4">
             <a href="../export/laporan_petty.php" class="btn btn-success">Export Laporan Petty</a>
@@ -137,7 +137,7 @@ $datap2 = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' ORDER BY
                       <?php $sis = $sis - $row["kredit"]; ?>
                       <?php $tot = $tot + $row["kredit"]; ?>
                       <td class="col-lg-2"><?php echo rupiah($sis) ?></td>
-                      <td class="col-lg-1"><a href="../back/delete_kegiatan_petty_lap.php?id=<?php echo $row['id']; ?>">hapus</a></td>
+                      <td class="col-lg-1"><a href="../back/delete_kegiatan_petty_lap.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Hapus Kegiatan Petty Sesi ini?');">hapus</a></td>
                     </tr>
                     <?php $i++; ?>
 

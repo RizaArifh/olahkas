@@ -67,9 +67,10 @@ if (isset($_GET['jangka'])) {
 
         <div class="row">
             <div class="col-lg-12">
-                <a class="btn btn-danger" href="../back/clear_data_keg.php">Clear Data</a>
+                <a class="btn btn-danger" href="../back/clear_data_keg.php" onclick="return confirm('Hapus Semua Data Kegiatan RKA?');">Clear Data</a>
 
             </div>
+            <br><br>
             <div class="col-lg-3">
                 <form method="get">
                     <select name="jangka" id="jangkawkt" onchange="gantitanggal(this.value)" class="form-control">

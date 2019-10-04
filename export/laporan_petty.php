@@ -45,7 +45,7 @@ $num=mysqli_num_rows($datacek);
  <?php 
  header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 if($last==0){
-    header("Content-Disposition: attachment;filename=\"Petty_Cash_per_.xls\"");
+    header("Content-Disposition: attachment;filename=\"Petty_Cash_per.xls\"");
 }else{
  $ab=DateTime::createFromFormat('Y-m-d', $st)->format('d/M/Y');
  header("Content-Disposition: attachment;filename=\"Petty_Cash_per_$ab.xls\"");
@@ -65,7 +65,7 @@ if($last==0){
  dengan perincian sebagai berikut:
  </pre>
  
-	<table border="1">
+	<table class="table-bordered">
         <thead>
         <tr>
             <th class="col-1" rowspan="2">NO.</th> 
