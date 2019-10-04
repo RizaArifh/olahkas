@@ -10,8 +10,8 @@ if (isset($_GET['jangka'])) {
     if ($tgl == 0) {
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
-        $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 group by subnama_kegiatan order by id");
-        $sttanggal = mysqli_query($con, "select * from data_transaksi where de=2 order by tanggal asc LIMIT 1");
+        $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 and subnama_kegiatan='$nama'");
+        $sttanggal = mysqli_query($con, "select * from data_transaksi where de=2 and subnama_kegiatan='$nama' order by tanggal asc LIMIT 1");
         while ($row = mysqli_fetch_array($sttanggal)) {
             $sttgl = $row['tanggal'];
         }
@@ -20,8 +20,8 @@ if (isset($_GET['jangka'])) {
         $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . " -$tgl day"));
         // $x = date("Y-m-d", strtotime("-$tgl days", $tanggal_now));
-        $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 and tanggal between '$x' and '$tanggal_now' group by subnama_kegiatan order by id");
-        $sttanggal = mysqli_query($con, "select * from data_transaksi where de=2 and tanggal between '$x' and '$tanggal_now' order by tanggal asc LIMIT 1");
+        $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 and subnama_kegiatan='$nama' and tanggal between '$x' and '$tanggal_now'");
+        $sttanggal = mysqli_query($con, "select * from data_transaksi where de=2 and subnama_kegiatan='$nama' and tanggal between '$x' and '$tanggal_now' order by tanggal asc LIMIT 1");
         while ($row = mysqli_fetch_array($sttanggal)) {
             $sttgl = $row['tanggal'];
         }
@@ -29,8 +29,8 @@ if (isset($_GET['jangka'])) {
 } else {
     $tanggal_now = date('Y-m-d');
         $x = date('Y-m-d', strtotime(date("Y-m-d", mktime()) . "-1000000000 day"));
-    $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 group by subnama_kegiatan order by id");
-    $sttanggal = mysqli_query($con, "select * from data_transaksi where de=2 order by tanggal asc LIMIT 1");
+    $datatotal = mysqli_query($con, "select * from data_transaksi where de=2 and subnama_kegiatan='$nama'");
+    $sttanggal = mysqli_query($con, "select * from data_transaksi where de=2 and subnama_kegiatan='$nama' order by tanggal asc LIMIT 1");
     while ($row = mysqli_fetch_array($sttanggal)) {
         $sttgl = $row['tanggal'];
     }
@@ -85,7 +85,7 @@ if (isset($_GET['jangka'])) {
         <?php
         $k = 0;
         ?>
-<br><br>
+<br>
 <div class="col-lg-12">
         <div class="row justify-content-center">
 
@@ -94,6 +94,7 @@ if (isset($_GET['jangka'])) {
                     <div class="card " style="border:0.5px solid grey;border-radius:10px; overflow:hidden;font-size:17px;">
                         <table class="table-hover table-bordered">
                             <tr style="background:#2891DD; color:white">
+                        <th>No</th>
                         <th>Tanggal</th>
                         <th>Nama</th>
                         <th>Keterangan</th>
@@ -108,6 +109,7 @@ if (isset($_GET['jangka'])) {
                         $saldo_berjalan = 0;
                         foreach ($datatotal as $row) { ?>
                             <tr>
+                                <td><?php echo $i ?></td>
                                 <td><?php echo $row["tanggal"]; ?></td>
                                 <td><?php echo $row["subnama_kegiatan"]; ?></td>
                                 <?php
@@ -128,7 +130,7 @@ if (isset($_GET['jangka'])) {
                                     ?>
                                 <td><?= $k; ?></td>
                                 <?php
-                                    $saldo_berjalan = $saldo_berjalan + $row['kredit'];
+                                    $saldo_berjalan = $saldo_berjalan + $k;
                                     ?>
                                 <td><?= $saldo_berjalan ?></td>
                             </tr>

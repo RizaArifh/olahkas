@@ -83,12 +83,12 @@ if (isset($_GET['jangka'])) {
                         <table class="table-hover table-bordered">
                             <tr style="background:#2891DD; color:white">
                         
-                        <th>Nama</th>
-                        <th>Pinjam</th>
-                        <th>Kembali</th>
-                        <th>Kas Bon</th>
-                        <th>Saldo Berjalan</th>
-                        <th>Detail</th>
+                        <th class="col-lg-2">Nama</th>
+                        <th class="col-lg-2">Pinjam</th>
+                        <th class="col-lg-2">Kembali</th>
+                        <th class="col-lg-2">Kas Bon</th>
+                        <th class="col-lg-2">Saldo Berjalan</th>
+                        <th class="col-lg-2">Detail</th>
                     </tr>
                     <tbody>
                         <?php

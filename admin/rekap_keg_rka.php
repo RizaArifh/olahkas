@@ -89,12 +89,12 @@ if (isset($_GET['jangka'])) {
                         <table class="table-hover table-bordered">
                             <tr style="background:#2891DD; color:white">
 
-                                <th>Nama</th>
-                                <th>Debet</th>
-                                <th>Kredit</th>
-                                <th>Saldo</th>
-                                <th>Saldo Berjalan</th>
-                                <th>Detail</th>
+                                <th class="col-lg-2">Nama</th>
+                                <th class="col-lg-2">Debet</th>
+                                <th class="col-lg-2">Kredit</th>
+                                <th class="col-lg-2">Saldo</th>
+                                <th class="col-lg-2">Saldo Berjalan</th>
+                                <th class="col-lg-2">Detail</th>
 
                             </tr>
                             <tbody>
@@ -103,7 +103,7 @@ if (isset($_GET['jangka'])) {
                                 $saldo_berjalan = 0; ?>
                                 <?php foreach ($datatotal as $row) : ?>
                                     <tr>
-                                        <td><?php echo $row["subnama_kegiatan"]; ?></td>
+                                        <td ><?php echo $row["subnama_kegiatan"]; ?></td>
 
                                         <?php
                                             $kred = 0;
