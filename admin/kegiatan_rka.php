@@ -339,6 +339,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
             function GetNo_kegiatand(id) {
                 if (id.length == 0) {
                     $('#nama_kegiatand').val('Pilih No Kegiatan');
+                    
+                    $('#sudah_debet').val('');
+                    $('#jmlrka').val('');
                     return;
                 } else {
                     var xmlhttp = new XMLHttpRequest();
@@ -372,6 +375,9 @@ $datakeg = mysqli_query($con, "SELECT * FROM kegiatan");
             function GetNo_kegiatank(id) {
                 if (id.length == 0) {
                     $('#nama_kegiatank').val('Pilih No Kegiatan');
+                    $('#jmlad').val('');
+                    $('#jmlk').val('');
+                    
                     return;
                 } else {
                     var xmlhttp = new XMLHttpRequest();
