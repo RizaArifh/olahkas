@@ -47,7 +47,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                             <label for="" class="control-label">Masukkan Petty Ke </label>
                         </div>
                         <div class="col-md-7">
-                            <input class="form-control" type="text" name="keterangan" value="<?= $last + 1 ?>"><br>
+                            <input class="form-control" type="text" name="keterangan" value="<?= $last + 1 ?>" readonly><br>
                         </div>
                     </div>
                     <div style="float:right">
@@ -120,7 +120,7 @@ $datap = mysqli_query($con, "SELECT * FROM data_transaksi where de='3' and keter
                             <label for="tanggal">Tanggal :</label>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" style="padding:0px 12px;" readonly<br>
+                            <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" style="padding:0px 12px;" readonly><br>
                         </div>
                     </div>
                     <div class="row">
