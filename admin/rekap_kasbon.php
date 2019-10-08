@@ -100,7 +100,7 @@ if (isset($_GET['jangka'])) {
                         foreach ($datatotal as $row) { ?>
                             <tr>
                                 
-                                <td><?php echo $row["subnama_kegiatan"]; ?></td>
+                                <td class="col-lg-4"><?php echo $row["subnama_kegiatan"]; ?></td>
 
                                 <?php
                                     $kred = 0;
@@ -116,11 +116,11 @@ if (isset($_GET['jangka'])) {
 
                                     $saldo = $kred - $debt;
                                     ?>
-                                <td><?php echo rupiah($kred); ?></td>
-                                <td><?php echo rupiah($debt); ?></td>
-                                <td><?php echo rupiah($saldo) ?></td>
+                                <td class="col-lg-2"><?php echo rupiah($kred); ?></td>
+                                <td class="col-lg-2"><?php echo rupiah($debt); ?></td>
+                                <td class="col-lg-2"><?php echo rupiah($saldo) ?></td>
                                 
-                                <td><a class="btn btn-secondary" href="rekap_kasbon_detail.php?nama=<?php echo $row['subnama_kegiatan']; ?>">Detail</a></td>
+                                <td class="col-lg-2"><a class="btn btn-secondary" href="rekap_kasbon_detail.php?nama=<?php echo $row['subnama_kegiatan']; ?>">Detail</a></td>
                             </tr>
                         <?php
                             $i++;

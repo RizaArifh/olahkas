@@ -89,7 +89,7 @@ if (isset($_GET['jangka'])) {
                         <table class="table-hover table-bordered">
                             <tr style="background:#2891DD; color:white">
                         
-                        <th class="col-lg-2">Nama</th>
+                        <th class="col-lg-4">Nama</th>
                         <th class="col-lg-2">Pinjam</th>
                         <th class="col-lg-2">Kembali</th>
                         <th class="col-lg-2">Kas Bon</th>
