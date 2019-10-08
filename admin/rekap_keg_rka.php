@@ -97,7 +97,6 @@ if (isset($_GET['jangka'])) {
                                 <th class="col-lg-2">Debet</th>
                                 <th class="col-lg-2">Kredit</th>
                                 <th class="col-lg-2">Saldo</th>
-                                <th class="col-lg-2">Saldo Berjalan</th>
                                 <th class="col-lg-2">Detail</th>
 
                             </tr>
@@ -107,7 +106,7 @@ if (isset($_GET['jangka'])) {
                                 $saldo_berjalan = 0; ?>
                                 <?php foreach ($datatotal as $row) : ?>
                                     <tr>
-                                        <td ><?php echo $row["subnama_kegiatan"]; ?></td>
+                                        <td class="col-lg-4"><?php echo $row["subnama_kegiatan"]; ?></td>
 
                                         <?php
                                             $kred = 0;
@@ -127,15 +126,11 @@ if (isset($_GET['jangka'])) {
 
                                             $saldo = $debt - $kred;
                                             ?>
-                                        <td><?php echo rupiah($debt); ?></td>
-                                        <td><?php echo rupiah($kred); ?></td>
-                                        <td><?php echo rupiah($saldo); ?></td>
-                                        <?php
-                                            $saldo_berjalan = $saldo_berjalan + $saldo;
-                                            ?>
-                                        <td><?php echo rupiah($saldo_berjalan); ?>
-                                        </td>
-                                        <td><a href="rekap_keg_rka_detail.php?nama=<?php echo $row['subnama_kegiatan'];?>">Detail</a></td>
+                                        <td class="col-lg-2"><?php echo rupiah($debt); ?></td>
+                                        <td class="col-lg-2"><?php echo rupiah($kred); ?></td>
+                                        <td class="col-lg-2"><?php echo rupiah($saldo); ?></td>
+                                        
+                                        <td class="col-lg-2"><a class="btn btn-secondary" href="rekap_keg_rka_detail.php?nama=<?php echo $row['subnama_kegiatan'];?>">Detail</a></td>
 
                                     </tr>
                                     <?php $i++; ?>

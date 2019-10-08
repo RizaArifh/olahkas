@@ -98,7 +98,7 @@ if (isset($_GET['jangka'])) {
                                 <th class="col-lg-2">Debet</th>
                                 <th class="col-lg-2">Kredit</th>
                                 <th class="col-lg-2">Saldo</th>
-                                <th class="col-lg-2">Saldo Berjalan</th>
+                                
 
                             </tr>
                             <tbody>
@@ -121,10 +121,6 @@ if (isset($_GET['jangka'])) {
                                         <td><?php echo rupiah($row['kredit']); ?></td>
                                         <?php $saldo=$saldo+$row['debet']-$row['kredit'];?>
                                         <td><?php echo rupiah($saldo); ?></td>
-                                        <?php
-                                            $saldo_berjalan = $saldo_berjalan + $saldo;
-                                            ?>
-                                        <td><?php echo rupiah($saldo_berjalan); ?>
                                         </td>
                     
                                     </tr>

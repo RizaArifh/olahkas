@@ -93,11 +93,10 @@ if (isset($_GET['jangka'])) {
                         <table class="table-hover table-bordered">
                             <tr style="background:#2891DD; color:white">
 
-                                <th class="col-lg-2">Nama</th>
+                                <th class="col-lg-4">Nama</th>
                                 <th class="col-lg-2">Debet</th>
                                 <th class="col-lg-2">Kredit</th>
                                 <th class="col-lg-2">Saldo</th>
-                                <th class="col-lg-2">Saldo Berjalan</th>
                                 <th class="col-lg-2">Detail</th>
 
                             </tr>
@@ -108,19 +107,15 @@ if (isset($_GET['jangka'])) {
                                 <?php foreach ($datatotal as $row) : ?>
                                     <tr>
                                         <td ><?php echo $row["subnama_kegiatan"]; ?></td>
-                                        <td ><?php echo $row["debet"]; ?></td>
-                                        <td ><?php echo $row["kredit"]; ?></td>
+                                        <td ><?php echo rupiah($row["debet"]); ?></td>
+                                        <td ><?php echo rupiah($row["kredit"]); ?></td>
                                         <?php
                                             $sub = $row["subnama_kegiatan"];
                                             $saldo = $row["debet"]; - $row["debet"];;
                                             ?>
                                         <td><?php echo rupiah($saldo); ?></td>
-                                        <?php
-                                            $saldo_berjalan = $saldo_berjalan + $saldo;
-                                            ?>
-                                        <td><?php echo rupiah($saldo_berjalan); ?>
-                                        </td>
-                                        <td><a href="rekap_keg_rka_detail.php?nama=<?php echo $row['subnama_kegiatan'];?>">Detail</a></td>
+
+                                        <td><a class="btn btn-secondary" href="rekap_keg_rka_detail.php?nama=<?php echo $row['subnama_kegiatan'];?>">Detail</a></td>
 
                                     </tr>
                                     <?php $i++; ?>

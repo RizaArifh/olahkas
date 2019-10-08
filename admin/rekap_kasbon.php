@@ -91,7 +91,6 @@ if (isset($_GET['jangka'])) {
                         <th class="col-lg-2">Pinjam</th>
                         <th class="col-lg-2">Kembali</th>
                         <th class="col-lg-2">Kas Bon</th>
-                        <th class="col-lg-2">Saldo Berjalan</th>
                         <th class="col-lg-2">Detail</th>
                     </tr>
                     <tbody>
@@ -120,12 +119,8 @@ if (isset($_GET['jangka'])) {
                                 <td><?php echo rupiah($kred); ?></td>
                                 <td><?php echo rupiah($debt); ?></td>
                                 <td><?php echo rupiah($saldo) ?></td>
-                                <?php
-                                    $saldo_berjalan = $saldo_berjalan + $saldo;
-                                    ?>
-                                <td><?php echo rupiah($saldo_berjalan); ?>
-                                </td>
-                                <td><a href="rekap_kasbon_detail.php?nama=<?php echo $row['subnama_kegiatan']; ?>">Detail</a></td>
+                                
+                                <td><a class="btn btn-secondary" href="rekap_kasbon_detail.php?nama=<?php echo $row['subnama_kegiatan']; ?>">Detail</a></td>
                             </tr>
                         <?php
                             $i++;
